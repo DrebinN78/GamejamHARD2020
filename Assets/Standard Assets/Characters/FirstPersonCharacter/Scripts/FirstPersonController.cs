@@ -12,7 +12,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] Rewired.Player rewiredPlayer;
+        [SerializeField] public Player rewiredPlayer;
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -50,14 +50,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if(gameObject.name == "Player_Police")
             {
-                rewiredPlayer = GetComponent<RewiredInputManager>().GetPlayer(2);
+                rewiredPlayer = ReInput.players.GetPlayer(1);
+                Debug.Log("Pouet");
+
             }
             else
             {
-                rewiredPlayer = GetComponent<RewiredInputManager>().GetPlayer(1);
+                rewiredPlayer = ReInput.players.GetPlayer(0);
+                Debug.Log("Prout");
             }
             m_CharacterController = GetComponent<CharacterController>();
-            m_Camera = Camera.main;
+            m_Camera = GetComponentInChildren<Camera>();
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
             m_FovKick.Setup(m_Camera);
             m_HeadBob.Setup(m_Camera, m_StepInterval);
