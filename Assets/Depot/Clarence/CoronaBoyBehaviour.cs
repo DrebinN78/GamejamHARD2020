@@ -11,6 +11,15 @@ public class CoronaBoyBehaviour : MonoBehaviour
     public bool isMasked = false;
     public bool isPlayable = true;
 
+    private void Start()
+    {
+        if (isMasked && isPlayable)
+            GameManager.instance.maskedPeople.Add(this);
+        else if (!isMasked && !isPlayable)
+            GameManager.instance.unMaskedPeople.Add(this);
+        else return;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!isPlayable)
@@ -22,7 +31,10 @@ public class CoronaBoyBehaviour : MonoBehaviour
             CoronaBoyBehaviour touchedCoronaBoy = other.gameObject.GetComponent<CoronaBoyBehaviour>();
 
             if (!touchedCoronaBoy.isPlayable && touchedCoronaBoy.isMasked)
+            {
                 touchedCoronaBoy.isMasked = false;
+                touchedCoronaBoy.UnMasked();
+            }
         }
         else return;
     }
@@ -45,5 +57,27 @@ public class CoronaBoyBehaviour : MonoBehaviour
         //desactiver le comportement npc
         //activer les controls fps
         npcBehaviour.isWandering = false;
+    }
+
+    public void UnMasked()
+    {
+        foreach (CoronaBoyBehaviour coronaBoy in GameManager.instance.maskedPeople)
+        {
+            if (coronaBoy == this)
+                GameManager.instance.maskedPeople.Remove(coronaBoy);
+        }
+        GameManager.instance.unMaskedPeople.Add(this);
+        GameManager.instance.UpdateCounter();
+    }
+
+    public void Masked()
+    {
+        foreach (CoronaBoyBehaviour coronaBoy in GameManager.instance.maskedPeople)
+        {
+            if (coronaBoy == this)
+                GameManager.instance.unMaskedPeople.Remove(coronaBoy);
+        }
+        GameManager.instance.maskedPeople.Add(this);
+        GameManager.instance.UpdateCounter();
     }
 }
