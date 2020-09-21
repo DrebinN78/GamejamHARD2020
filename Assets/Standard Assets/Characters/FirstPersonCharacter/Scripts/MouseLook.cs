@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using Rewired;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [Serializable]
     public class MouseLook
     {
+        public Rewired.Player rewiredPlayer;
         public float XSensitivity = 2f;
         public float YSensitivity = 2f;
         public bool clampVerticalRotation = true;
@@ -20,9 +22,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
         private bool m_cursorIsLocked = true;
-
-        public void Init(Transform character, Transform camera)
+        public void Init(Transform character, Transform camera, Rewired.Player plyr)
         {
+            rewiredPlayer = plyr;
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
         }
@@ -30,8 +32,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+            float yRot = rewiredPlayer.GetAxis("MoveUpDown") * XSensitivity;
+            float xRot = rewiredPlayer.GetAxis("MoveLeftRight") * YSensitivity;
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
