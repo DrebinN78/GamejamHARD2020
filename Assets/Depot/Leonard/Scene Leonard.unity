@@ -790,41 +790,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8557495374724141060, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_HeadBob.Bobcurve.m_Curve.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_HeadBob.Bobcurve.m_Curve.Array.data[2].time
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_HeadBob.Bobcurve.m_Curve.Array.data[2].value
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_HeadBob.Bobcurve.m_Curve.Array.data[3].time
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_HeadBob.Bobcurve.m_Curve.Array.data[3].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_UseHeadBob
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_JumpSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
-      propertyPath: m_JumpSound
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21788464748ce344c92006ff64d57428, type: 3}
