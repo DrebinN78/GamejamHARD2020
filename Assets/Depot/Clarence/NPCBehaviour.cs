@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Objective : MonoBehaviour
+public class NPCBehaviour : MonoBehaviour
 {
-    public bool isMasked = true;
+    public bool isWandering = true;
 }
