@@ -865,8 +865,8 @@ MonoBehaviour:
   timer: 60
   maskedPeopleCounter: 0
   unMaskedPeopleCounter: 0
-  maskedText: {fileID: 0}
-  unMaskedText: {fileID: 0}
+  maskedText: {fileID: 1225241641}
+  unMaskedText: {fileID: 671252640}
   unMaskedPeople: []
   maskedPeople: []
 --- !u!1 &1225241639
