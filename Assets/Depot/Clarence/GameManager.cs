@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public GameObject endScreen;
+
     public float timer = 60f;
     bool takingAway = false;
 
@@ -63,6 +65,14 @@ public class GameManager : MonoBehaviour
     {
         if (!takingAway && timer > 0)
             StartCoroutine(UpdateTimer());
+        else if (timer <= 0)
+        {
+            Debug.Log("FinishedGame");
+            if (!endScreen.activeSelf)
+            {
+                endScreen.SetActive(true);
+            }
+        }
     }
 
     public void UpdateCounter()
