@@ -56,8 +56,6 @@ public class RoleSelection : MonoBehaviour
 
     void CharacterSelectionManager()
     {
-        Debug.Log(m_Player2.GetAxis("MoveLeftRight"));
-
         // Player 1
 
         if (m_Player1.GetAxis("MoveLeftRight") < 0 && !m_P1isMoving)
@@ -161,9 +159,14 @@ public class RoleSelection : MonoBehaviour
                 m_P2Choice = m_PositionP2;
 
                 // Envoyer le choix
-                Debug.Log("Choix Envoyé :");
-                Debug.Log("Choix P1 = " + m_P1Choice);
-                Debug.Log("Choix P2 = " + m_P2Choice);
+                // -1 = Coronaboy
+                //  1 = Coronacop
+
+
+            }
+            else
+            {
+                Debug.Log("NOPE");
             }
         }
 

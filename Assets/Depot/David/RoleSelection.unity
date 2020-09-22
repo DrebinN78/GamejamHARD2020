@@ -833,6 +833,10 @@ PrefabInstance:
       propertyPath: _userData.players.Array.data[2]._defaultJoystickMaps.Array.data[0]._enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 144964709933124776, guid: 689608f3d6cfeb541b34bb91d0a4d947, type: 3}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[13]._actionId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5036304643613700579, guid: 689608f3d6cfeb541b34bb91d0a4d947, type: 3}
       propertyPath: m_Name
       value: ParsecRewiredInput
