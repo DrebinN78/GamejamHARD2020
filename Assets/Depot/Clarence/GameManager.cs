@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public float timer = 60f;
     bool takingAway = false;
 
-    public int maskedPeopleCounter = 0;
-    public int unMaskedPeopleCounter = 0;
+    public static int maskedPeopleCounter = 0;
+    public static int unMaskedPeopleCounter = 0;
 
     public Text timerText;
     public Text maskedText;
@@ -53,5 +53,16 @@ public class GameManager : MonoBehaviour
         timer -= 1;
         timerText.text = timer.ToString();
         takingAway = false;
+    }
+
+    public void RespawnCoronaBoy(CoronaBoyBehaviour player_instance)
+    {
+        int npcSelector = Random.Range(0, unMaskedPeopleCounter);
+        CoronaBoyBehaviour npcSelected = unMaskedPeople[npcSelector];
+        Transform respawnLocation = unMaskedPeople[npcSelector].transform;
+        Transform NPCspawnLocation = player_instance.transform;
+        player_instance.transform.Translate(respawnLocation.position);
+        npcSelected.transform.Translate(NPCspawnLocation.position);
+        npcSelected.isMasked = true;
     }
 }

@@ -18,7 +18,7 @@ public class PoliceBehaviour : MonoBehaviour
             }
             else if (touchedCoronaBoy.isPlayable && !touchedCoronaBoy.isMasked)
             {
-
+                GameManager.instance.RespawnCoronaBoy(touchedCoronaBoy);
             }
         }
         else return;

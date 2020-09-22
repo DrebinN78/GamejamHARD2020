@@ -1,0 +1,13 @@
+respawn
+
+- swap player with unmasked NPC (and remask him)
+
+
+
+
+
+
+secondaire : 
+
+- timer
+
