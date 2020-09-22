@@ -320,8 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsController: {fileID: 0}
   npcBehaviour: {fileID: 0}
-  isMasked: 0
-  isPlayable: 1
 --- !u!1 &8557495374722634278
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +480,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
       propertyPath: m_Name
       value: CoronaBoy_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3412361095618120187, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
       propertyPath: m_Materials.Array.data[0]
