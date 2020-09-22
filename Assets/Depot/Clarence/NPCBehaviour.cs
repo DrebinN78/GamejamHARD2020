@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCBehaviour : MonoBehaviour
 {
     public bool isMasked = true;
+    [SerializeField] private GameObject mask;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class NPCBehaviour : MonoBehaviour
     public void UnMask()
     {
         GameManager.instance.unMaskedPeople.Add(this);
+        mask.SetActive(false);
         foreach (NPCBehaviour coronaBoy in GameManager.instance.maskedPeople)
         {
             if (coronaBoy == this)
@@ -31,6 +33,7 @@ public class NPCBehaviour : MonoBehaviour
     public void Mask()
     {
         GameManager.instance.maskedPeople.Add(this);
+        mask.SetActive(true);
         foreach (NPCBehaviour coronaBoy in GameManager.instance.unMaskedPeople)
         {
             if (coronaBoy == this)
