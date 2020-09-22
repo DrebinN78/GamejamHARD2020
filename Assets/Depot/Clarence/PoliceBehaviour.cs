@@ -13,8 +13,8 @@ public class PoliceBehaviour : MonoBehaviour
 
             if (!touchedCoronaBoy.isPlayable && !touchedCoronaBoy.isMasked)
             {
-                touchedCoronaBoy.isMasked = true;
                 touchedCoronaBoy.Masked();
+                touchedCoronaBoy.isMasked = true;
             }
             else if (touchedCoronaBoy.isPlayable && !touchedCoronaBoy.isMasked)
             {
