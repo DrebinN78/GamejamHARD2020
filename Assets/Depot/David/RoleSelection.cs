@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Rewired;
 
 public class RoleSelection : MonoBehaviour
@@ -36,11 +37,12 @@ public class RoleSelection : MonoBehaviour
     [SerializeField]
     private bool m_P2isMoving;
 
-    private int m_P1Choice;
-    private int m_P2Choice;
+    public static int m_P1Choice;
+    public static int m_P2Choice;
 
     void Start()
     {
+        DontDestroyOnLoad(this);
         Cursor.visible = false;
         m_OriginalPositionP1 = m_ControllerP1.transform.position;
         m_OriginalPositionP2 = m_ControllerP2.transform.position;
@@ -157,12 +159,7 @@ public class RoleSelection : MonoBehaviour
             {
                 m_P1Choice = m_PositionP1;
                 m_P2Choice = m_PositionP2;
-
-                // Envoyer le choix
-                // -1 = Coronaboy
-                //  1 = Coronacop
-
-
+                SceneManager.LoadScene(1);
             }
             else
             {
@@ -179,4 +176,13 @@ public class RoleSelection : MonoBehaviour
         return false;
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            GameManager.instance.p1Choice = m_P1Choice;
+            GameManager.instance.p2Choice = m_P2Choice;
+            Destroy(this);
+        }
+    }
 }

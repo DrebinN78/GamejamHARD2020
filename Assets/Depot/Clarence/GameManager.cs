@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
+using Rewired;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +22,9 @@ public class GameManager : MonoBehaviour
     public List<NPCBehaviour> unMaskedPeople;
     public List<NPCBehaviour> maskedPeople;
 
+    public int p1Choice;
+    public int p2Choice;
+
     private void Awake()
     {
         instance = this;
@@ -29,6 +34,23 @@ public class GameManager : MonoBehaviour
     {
         timerText.text = timer.ToString();
         UpdateCounter();
+        AssignPlayers();
+    }
+
+    private void AssignPlayers()
+    {
+        FirstPersonController corocopClass = GameObject.Find("Player_Police").GetComponent<FirstPersonController>();
+        FirstPersonController coroboyClass = GameObject.Find("Player_CoronaBoy").GetComponent<FirstPersonController>();
+        if(p1Choice != 1)
+        {
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+        }
+        else
+        {
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+        }
     }
 
     private void Update()

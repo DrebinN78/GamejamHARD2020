@@ -51,17 +51,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Use this for initialization
         private void Start()
         {
-            if(gameObject.name == "Player_Police")
-            {
-                rewiredPlayer = ReInput.players.GetPlayer(1);
-                Debug.Log("Pouet");
-
-            }
-            else
-            {
-                rewiredPlayer = ReInput.players.GetPlayer(0);
-                Debug.Log("Prout");
-            }
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = GetComponentInChildren<Camera>();
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
