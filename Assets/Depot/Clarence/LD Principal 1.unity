@@ -3034,6 +3034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47fb4aa724b02a14f8389508d2fe4fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endScreen: {fileID: 1698918576}
   timer: 60
   allNPCs: 5
   timerText: {fileID: 594880749}
@@ -13642,6 +13643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c31a511f9d4ca546a059fc5a7c9ce1d, type: 3}
+--- !u!1 &1698918576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7024411021607538446, guid: 0c31a511f9d4ca546a059fc5a7c9ce1d, type: 3}
+  m_PrefabInstance: {fileID: 1698918575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1712174436 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5254337382865953128, guid: 0c31a511f9d4ca546a059fc5a7c9ce1d, type: 3}
