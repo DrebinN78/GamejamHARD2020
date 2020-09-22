@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6989507474273055539}
   - component: {fileID: 5123776197035771897}
   - component: {fileID: 2787009614601759052}
+  - component: {fileID: 2701875713584570774}
   m_Layer: 0
   m_Name: lampadaire
   m_TagString: Untagged
@@ -97,3 +98,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5818063044284238064, guid: da5e5dfe229f4ef47810dcf1f9be3984, type: 3}
+--- !u!65 &2701875713584570774
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637095553962665516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.273587, y: 0.27126166, z: 2.3237731}
+  m_Center: {x: 0.00407721, y: -0.0006698013, z: 0.94116783}
