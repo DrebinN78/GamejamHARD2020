@@ -32,8 +32,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
             if (!touchedCoronaBoy.isPlayable && touchedCoronaBoy.isMasked)
             {
-                touchedCoronaBoy.isMasked = false;
                 touchedCoronaBoy.UnMasked();
+                touchedCoronaBoy.isMasked = false;
             }
         }
         else return;

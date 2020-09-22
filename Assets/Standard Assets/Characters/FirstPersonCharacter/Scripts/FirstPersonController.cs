@@ -45,6 +45,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        //Animation
+        private Animator m_Anim;
+
         // Use this for initialization
         private void Start()
         {
@@ -69,6 +72,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform, rewiredPlayer);
+            m_Anim = GetComponentInChildren<Animator>();
         }
 
 
@@ -226,7 +230,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+            m_IsWalking = !rewiredPlayer.GetButton("Run");
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
@@ -244,6 +248,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
+            }
+            
+            if (horizontal != 0 || vertical != 0)
+            {
+                if (m_IsWalking)
+                {
+                    m_Anim.SetBool("IsWalk", true);
+                    m_Anim.SetBool("IsRun", false);
+                }
+                else
+                {
+                    m_Anim.SetBool("IsRun", true);
+                    m_Anim.SetBool("IsWalk", false);
+                }
+            }
+            else
+            {
+                m_Anim.SetBool("IsWalk", false);
+                m_Anim.SetBool("IsRun",false);
+                m_Anim.SetBool("Idle", true);
             }
         }
 
