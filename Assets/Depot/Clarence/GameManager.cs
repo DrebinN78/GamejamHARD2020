@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
+using Rewired;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,8 +19,11 @@ public class GameManager : MonoBehaviour
     public Text maskedText;
     public Text unMaskedText;
 
-    public List<CoronaBoyBehaviour> unMaskedPeople;
-    public List<CoronaBoyBehaviour> maskedPeople;
+    public List<NPCBehaviour> unMaskedPeople;
+    public List<NPCBehaviour> maskedPeople;
+
+    public int p1Choice;
+    public int p2Choice;
 
     private void Awake()
     {
@@ -29,6 +34,23 @@ public class GameManager : MonoBehaviour
     {
         timerText.text = timer.ToString();
         UpdateCounter();
+        AssignPlayers();
+    }
+
+    private void AssignPlayers()
+    {
+        FirstPersonController corocopClass = GameObject.Find("Player_Police").GetComponent<FirstPersonController>();
+        FirstPersonController coroboyClass = GameObject.Find("Player_CoronaBoy").GetComponent<FirstPersonController>();
+        if(p1Choice != 1)
+        {
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+        }
+        else
+        {
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+        }
     }
 
     private void Update()
@@ -55,10 +77,10 @@ public class GameManager : MonoBehaviour
         takingAway = false;
     }
 
-    public void RespawnCoronaBoy(CoronaBoyBehaviour player_instance)
+    public void RespawnCoronaBoy(NPCBehaviour player_instance)
     {
         int npcSelector = Random.Range(0, unMaskedPeopleCounter);
-        CoronaBoyBehaviour npcSelected = unMaskedPeople[npcSelector];
+        NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
         Transform respawnLocation = unMaskedPeople[npcSelector].transform;
         Transform NPCspawnLocation = player_instance.transform;
         player_instance.transform.Translate(respawnLocation.position);

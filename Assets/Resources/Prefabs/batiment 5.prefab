@@ -334,6 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5989028512176710251}
   - component: {fileID: 7441555834596828746}
+  - component: {fileID: 3399485238189864629}
   m_Layer: 0
   m_Name: batiment 5
   m_TagString: Untagged
@@ -349,7 +350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6365447883080792273}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 13.15, y: -0.08903599, z: -48.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 637072355160023628}
@@ -377,6 +378,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!65 &3399485238189864629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365447883080792273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.41687, y: 2.7830467, z: 10.456875}
+  m_Center: {x: -3.7416358, y: 1.3866949, z: 9.216518}
 --- !u!1 &6780625453409469776
 GameObject:
   m_ObjectHideFlags: 0
