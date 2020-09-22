@@ -3035,9 +3035,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 60
+  allNPCs: 5
   timerText: {fileID: 594880749}
   maskedText: {fileID: 1712174436}
   unMaskedText: {fileID: 478946835}
+  maskedBar: {fileID: 880016255}
+  unmaskedBar: {fileID: 1747627419}
   unMaskedPeople: []
   maskedPeople: []
 --- !u!4 &344465793
@@ -6761,6 +6764,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1881188497881214210, guid: 3bf54dc9e4c4dd7438a9132b750f2fec, type: 3}
   m_PrefabInstance: {fileID: 876817152}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &880016255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1986229996533003133, guid: 0c31a511f9d4ca546a059fc5a7c9ce1d, type: 3}
+  m_PrefabInstance: {fileID: 1698918575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &887548888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13621,6 +13635,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7797098081644404256, guid: 70e70b12116dbcf4b8ff3a93bc77bf69, type: 3}
   m_PrefabInstance: {fileID: 1732979164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1747627419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6543395968581208279, guid: 0c31a511f9d4ca546a059fc5a7c9ce1d, type: 3}
+  m_PrefabInstance: {fileID: 1698918575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1756894073
 PrefabInstance:
   m_ObjectHideFlags: 0

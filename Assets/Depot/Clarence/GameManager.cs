@@ -13,9 +13,15 @@ public class GameManager : MonoBehaviour
     public static int maskedPeopleCounter = 0;
     public static int unMaskedPeopleCounter = 0;
 
+    public float allNPCs = 5;
+
     public Text timerText;
+
     public Text maskedText;
     public Text unMaskedText;
+
+    public Image maskedBar;
+    public Image unmaskedBar;
 
     public List<NPCBehaviour> unMaskedPeople;
     public List<NPCBehaviour> maskedPeople;
@@ -44,6 +50,9 @@ public class GameManager : MonoBehaviour
 
         unMaskedText.text = "Unmasked people: " + unMaskedPeopleCounter;
         maskedText.text = "Masked people: " + maskedPeopleCounter;
+
+        unmaskedBar.fillAmount = (float)unMaskedPeopleCounter / allNPCs;
+        maskedBar.fillAmount = (float)maskedPeopleCounter / allNPCs;
     }
 
     IEnumerator UpdateTimer()
