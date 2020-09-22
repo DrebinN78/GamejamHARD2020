@@ -45,6 +45,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        //Animation
+        private Animator m_Anim;
+
         // Use this for initialization
         private void Start()
         {
@@ -69,6 +72,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform, rewiredPlayer);
+            m_Anim = GetComponentInChildren<Animator>();
         }
 
 
@@ -244,6 +248,26 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
+            }
+            
+            if (horizontal != 0 || vertical != 0)
+            {
+                if (m_IsWalking)
+                {
+                    m_Anim.SetBool("IsWalk", true);
+                    m_Anim.SetBool("IsRun", false);
+                }
+                else
+                {
+                    m_Anim.SetBool("IsRun", true);
+                    m_Anim.SetBool("IsWalk", false);
+                }
+            }
+            else
+            {
+                m_Anim.SetBool("IsWalk", false);
+                m_Anim.SetBool("IsRun",false);
+                m_Anim.SetBool("Idle", true);
             }
         }
 
