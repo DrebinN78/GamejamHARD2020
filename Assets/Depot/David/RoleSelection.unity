@@ -485,6 +485,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3092682823366421183, guid: f159bcd9edf45fc4ca4d91cebb357625, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.210083
+      objectReference: {fileID: 0}
     - target: {fileID: 3092682823399416030, guid: f159bcd9edf45fc4ca4d91cebb357625, type: 3}
       propertyPath: m_Name
       value: CanvasCharacterSelection
