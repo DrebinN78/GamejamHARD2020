@@ -728,8 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 60
-  maskedPeopleCounter: 0
-  unMaskedPeopleCounter: 0
+  timerText: {fileID: 0}
   maskedText: {fileID: 0}
   unMaskedText: {fileID: 0}
   unMaskedPeople: []

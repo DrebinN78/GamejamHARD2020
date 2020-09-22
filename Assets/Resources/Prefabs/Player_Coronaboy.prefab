@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8557495374717684676}
   - component: {fileID: 1663871453}
   - component: {fileID: 1663871457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player_Coronaboy
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -48,8 +48,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0
-  m_Radius: 0
+  m_Height: 1
+  m_Radius: 1
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 8557495374724141060}
   - component: {fileID: 8557495374718045220}
   - component: {fileID: 8557495374730478178}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
