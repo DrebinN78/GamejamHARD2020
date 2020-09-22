@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 490302413}
   - component: {fileID: 490302412}
   - component: {fileID: 490302411}
+  - component: {fileID: 269218435}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -113,6 +114,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &269218435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490302409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183c9e6189e8aaf4ea631edec9adda85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8557495374722634276
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +138,8 @@ GameObject:
   - component: {fileID: 8557495374728636388}
   - component: {fileID: 8557495374729209796}
   - component: {fileID: 8557495374717684676}
+  - component: {fileID: 214557813}
+  - component: {fileID: 214557812}
   m_Layer: 0
   m_Name: Player_Police
   m_TagString: Player
@@ -378,6 +393,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!136 &214557813
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557495374722634276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.69
+  m_Height: 2.27
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &214557812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557495374722634276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183c9e6189e8aaf4ea631edec9adda85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8557495374722634278
 GameObject:
   m_ObjectHideFlags: 0
