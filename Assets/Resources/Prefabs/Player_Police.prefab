@@ -108,15 +108,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 12
-  m_RunSpeed: 4
+  m_WalkSpeed: 4
+  m_RunSpeed: 12
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 0
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
+    XSensitivity: 9
+    YSensitivity: 9
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
