@@ -526,6 +526,7 @@ MonoBehaviour:
     timeToRecharge: 6
     abilityRecharging: 0
     isOutlined: 0
+    talkieArm: {fileID: 6843516739130632349}
   powerUp2:
     immobilizationDuration: 5
     timeToRecharge: 10
@@ -690,6 +691,11 @@ PrefabInstance:
 --- !u!4 &422049394849249147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422049394044191092, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+  m_PrefabInstance: {fileID: 1342453263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6843516739130632349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6843516739936198290, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
   m_PrefabInstance: {fileID: 1342453263}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6843516739122912696 stripped
@@ -927,9 +933,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7790ea5388c773e429c9ec7be6bb4dbe, type: 3}
---- !u!1 &1946496986469031816 stripped
+--- !u!1 &711089584711592922 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7790ea5388c773e429c9ec7be6bb4dbe, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2169746930599528707, guid: 7790ea5388c773e429c9ec7be6bb4dbe, type: 3}
   m_PrefabInstance: {fileID: 1711985113364423385}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1173337368051746098 stripped
@@ -937,8 +943,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7790ea5388c773e429c9ec7be6bb4dbe, type: 3}
   m_PrefabInstance: {fileID: 1711985113364423385}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &711089584711592922 stripped
+--- !u!1 &1946496986469031816 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2169746930599528707, guid: 7790ea5388c773e429c9ec7be6bb4dbe, type: 3}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7790ea5388c773e429c9ec7be6bb4dbe, type: 3}
   m_PrefabInstance: {fileID: 1711985113364423385}
   m_PrefabAsset: {fileID: 0}

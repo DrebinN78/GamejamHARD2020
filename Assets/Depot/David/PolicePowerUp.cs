@@ -14,7 +14,8 @@ public class PolicePowerUp : MonoBehaviour
         public float timeToRecharge;
         public bool abilityRecharging;
         public bool isOutlined;
-    
+        public GameObject talkieArm;
+
     };
 
     [System.Serializable]
@@ -75,6 +76,7 @@ public class PolicePowerUp : MonoBehaviour
     {
         if (coroCop.GetButtonDown("Ability1") && !powerUp1.abilityRecharging && !powerUp2.taserOut)
         {
+            powerUp1.talkieArm.SetActive(true);
             powerUp1.abilityRecharging = true;
             powerUp1.isOutlined = true;
             GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 10;
@@ -99,7 +101,7 @@ public class PolicePowerUp : MonoBehaviour
 
     private void PowerUp2Manager()
     {
-        if(coroCop.GetButtonDown("Ability2"))
+        if(coroCop.GetButtonDown("Ability2") && !powerUp2.hasShot)
         {
             if (!powerUp2.taserOut)
             {
