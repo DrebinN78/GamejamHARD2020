@@ -11,6 +11,7 @@ public class PolicePowerUp : MonoBehaviour
         public float outlineDuration;
         public float timeToRecharge;
         public bool abilityRecharging;
+        public bool isOutlined;
     
     };
 
@@ -53,6 +54,7 @@ public class PolicePowerUp : MonoBehaviour
         if (coroCop.GetButtonDown("Ability1") && !powerUp1.abilityRecharging)
         {
             powerUp1.abilityRecharging = true;
+            powerUp1.isOutlined = true;
             GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 10;
         }
 
@@ -60,9 +62,10 @@ public class PolicePowerUp : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (timer == powerUp1.outlineDuration)
+            if (timer > powerUp1.outlineDuration && powerUp1.isOutlined)
             {
                 GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 0;
+                powerUp1.isOutlined = false;
             }
             if (timer > powerUp1.timeToRecharge)
             {
