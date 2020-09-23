@@ -110,9 +110,22 @@ public class CoronaBoyBehaviour : MonoBehaviour
                 Debug.Log("Coronaboy converted" + gameObject.name);
             }
         }
+
         //faire foncer tous les npcs de la liste "npclist" sur le corocop
+        foreach (NPCBehaviour npc in npcList)
+        {
+            npc.enraged = true;
+        }
+
+
         yield return new WaitForSecondsRealtime(rageDuration);
+
         //retourner tous les npc de la liste "npclist" à l'état normal
+        foreach (NPCBehaviour npc in npcList)
+        {
+            npc.enraged = false;
+        }
+
         StartCoroutine(AbilityCoolDown(2));
         yield return null;
     }

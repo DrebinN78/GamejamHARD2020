@@ -19,7 +19,10 @@ public class NPCBehaviour : MonoBehaviour
     private float wanderTime;
     private float timer;
     private bool isInLimits = true;
+    private bool goBackToOrigin;
     public Vector3 originalPos;
+
+    public bool enraged;
 
     private void Start()
     {
@@ -42,7 +45,7 @@ public class NPCBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (isInLimits)
+        if (isInLimits && !enraged)
         {
             timer += Time.deltaTime;
 
@@ -53,6 +56,20 @@ public class NPCBehaviour : MonoBehaviour
                 timer = 0;
             }
         }
+
+        if (enraged)
+        {
+            agent.SetDestination(GameObject.Find("Player_Police").transform.position);
+        }
+
+        if (!isInLimits && !goBackToOrigin && !enraged)
+        {
+            goBackToOrigin = true;
+            // Très très brut comme façon de le remettre dans les limites, à améliorer si possible
+            StartCoroutine(PauseAgentForSeconds(0.5f));
+            agent.SetDestination(originalPos);
+        }
+
     }
 
     Vector3 RandomNavSphere(Vector3 pos, float dist, int layermask)
@@ -72,9 +89,6 @@ public class NPCBehaviour : MonoBehaviour
         {
             Debug.Log("Exit limits");
             isInLimits = false;
-            // Très très brut comme façon de le remettre dans les limites, à améliorer si possible
-            StartCoroutine(PauseAgentForSeconds(3f));
-            agent.SetDestination(originalPos);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -82,6 +96,7 @@ public class NPCBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Limits")
         {
             Debug.Log("Enter limits");
+            goBackToOrigin = false;
             isInLimits = true;
         }
     }
@@ -124,4 +139,5 @@ public class NPCBehaviour : MonoBehaviour
         }
         GameManager.instance.UpdateCounter();
     }
+    
 }
