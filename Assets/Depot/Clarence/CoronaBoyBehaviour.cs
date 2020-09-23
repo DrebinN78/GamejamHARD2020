@@ -11,29 +11,53 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [SerializeField] private GameObject crowPrefab;
     [Range(1f, 5f)]
     [SerializeField] private float crowDuration = 1f;
+    [Range(1f, 5f)]
+    [SerializeField] private float rageDuration = 1f;
     [Range(1f, 30f)]
     [SerializeField] private float cooldownDurationAbility1 = 1f;
     [Range(1f, 30f)]
     [SerializeField] private float cooldownDurationAbility2 = 1f;
+    [Range(1f, 30f)]
+    [SerializeField] private float range = 1f;
+    
 
     bool ability1ready;
     bool ability2ready;
 
     void Ability1()
     {
-        StartCoroutine(Ability1routine());
+        if (ability1ready)
+        {
+            StartCoroutine(Ability1routine());
+        }
+        else
+        {
+            Debug.Log("Coroboy first ability is on cooldown");
+        }
+        
     }
 
     void Ability2()
     {
-        StartCoroutine(Ability2routine());
+        if (ability1ready)
+        {
+            StartCoroutine(Ability2routine());
+        }
+        else
+        {
+            Debug.Log("Coroboy second ability is on cooldown");
+        }
     }
 
     private void Update()
     {
-        if (fpsController.rewiredPlayer.GetButtonDown("Ability1"))
+        if(fpsController.rewiredPlayer.GetButtonDown("Ability1"))
         {
             Ability1();
+        }
+        if(fpsController.rewiredPlayer.GetButtonDown("Ability2"))
+        {
+            Ability2();
         }
     }
 
@@ -65,6 +89,30 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     IEnumerator Ability2routine()
     {
+        //List comprenant tout les NPC a convertir
+        List<NPCBehaviour> npcList = new List<NPCBehaviour>();
+        foreach(NPCBehaviour npc in GameManager.instance.maskedPeople)
+        {
+            npcList.Add(npc);
+        }
+        foreach (NPCBehaviour npc in GameManager.instance.unMaskedPeople)
+        {
+            npcList.Add(npc);
+        }
+        foreach(NPCBehaviour pos in npcList)
+        {
+            if(!(pos.transform.position.x > transform.position.x-range && pos.transform.position.x < transform.position.x + range && pos.transform.position.z > transform.position.z - range && pos.transform.position.z < transform.position.z + range))
+            {
+                npcList.Remove(pos);
+            }
+            else 
+            {
+                Debug.Log("Coronaboy converted" + gameObject.name);
+            }
+        }
+        //faire foncer tous les npcs de la liste "npclist" sur le corocop
+        yield return new WaitForSecondsRealtime(rageDuration);
+        //retourner tous les npc de la liste "npclist" à l'état normal
         StartCoroutine(AbilityCoolDown(2));
         yield return null;
     }
