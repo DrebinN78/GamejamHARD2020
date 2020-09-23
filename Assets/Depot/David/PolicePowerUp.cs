@@ -27,6 +27,9 @@ public class PolicePowerUp : MonoBehaviour
         public bool hasShot;
         public LayerMask layermask;
 
+        public GameObject taserArm;
+        public Animator taserAnim;
+
     };
     
     private Image crosshair;
@@ -100,11 +103,13 @@ public class PolicePowerUp : MonoBehaviour
         {
             if (!powerUp2.taserOut)
             {
+                powerUp2.taserArm.SetActive(true);
                 crosshair.enabled = true;
                 powerUp2.taserOut = true;
             }
             else
             {
+                powerUp2.taserAnim.SetTrigger("PutAwayTaser");
                 crosshair.enabled = false;
                 powerUp2.taserOut = false;
             }
@@ -113,6 +118,8 @@ public class PolicePowerUp : MonoBehaviour
         if(coroCop.GetButtonDown("ShootGun") && powerUp2.taserOut && !powerUp2.hasShot)
         {
             powerUp2.hasShot = true;
+
+            powerUp2.taserAnim.SetTrigger("UseTaser");
 
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
