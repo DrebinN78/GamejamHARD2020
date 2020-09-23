@@ -95,14 +95,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 2
-  m_RunSpeed: 8
+  m_RunSpeed: 10
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 0
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
+    XSensitivity: 9
+    YSensitivity: 9
     clampVerticalRotation: 0
     MinimumX: -80
     MaximumX: 80
@@ -439,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.826
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
       propertyPath: m_LocalPosition.z

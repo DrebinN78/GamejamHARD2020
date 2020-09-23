@@ -27,37 +27,45 @@ public class GameManager : MonoBehaviour
     public Image maskedBar;
     public Image unmaskedBar;
 
+    public PoliceBehaviour corocopObject;
+    public CoronaBoyBehaviour coroboyObject;
+
+    public FirstPersonController corocopClass;
+    public FirstPersonController coroboyClass;
+
     public List<NPCBehaviour> unMaskedPeople;
     public List<NPCBehaviour> maskedPeople;
 
-    public int p1Choice;
-    public int p2Choice;
+    public int p1Choice = 0;
+    public int p2Choice = 0;
 
     private void Awake()
     {
         instance = this;
+        //corocopObject = GetComponent<CoronaBoyBehaviour>();
+        //coroboyObject = GetComponent<PoliceBehaviour>();
+        //corocopClass = corocopObject.GetComponent<FirstPersonController>();
+        //coroboyClass = coroboyObject.GetComponent<FirstPersonController>();
+        AssignPlayers();
     }
 
     private void Start()
     {
         timerText.text = timer.ToString();
         UpdateCounter();
-        AssignPlayers();
     }
 
     private void AssignPlayers()
     {
-        FirstPersonController corocopClass = GameObject.Find("Player_Police").GetComponent<FirstPersonController>();
-        FirstPersonController coroboyClass = GameObject.Find("Player_CoronaBoy").GetComponent<FirstPersonController>();
-        if(p1Choice != 1)
-        {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
-        }
-        else
+        if(p1Choice == 1)
         {
             corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
             coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+        }
+        else
+        {
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
         }
     }
 
@@ -96,14 +104,23 @@ public class GameManager : MonoBehaviour
         takingAway = false;
     }
 
-    public void RespawnCoronaBoy(NPCBehaviour player_instance)
+    public void RespawnCoronaBoy(CoronaBoyBehaviour player_instance)
     {
-        int npcSelector = Random.Range(0, unMaskedPeopleCounter);
-        NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
-        Transform respawnLocation = unMaskedPeople[npcSelector].transform;
-        Transform NPCspawnLocation = player_instance.transform;
-        player_instance.transform.Translate(respawnLocation.position);
-        npcSelected.transform.Translate(NPCspawnLocation.position);
-        npcSelected.isMasked = true;
+        if (unMaskedPeopleCounter == 0)
+        {
+            Debug.Log("Coroboy est arrêté");
+            return;
+        }
+        else
+        {
+            int npcSelector = Random.Range(0, unMaskedPeopleCounter);
+            NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
+            Transform respawnLocation = unMaskedPeople[npcSelector].transform;
+            Transform NPCspawnLocation = player_instance.transform;
+            player_instance.transform.Translate(respawnLocation.position);
+            npcSelected.transform.Translate(NPCspawnLocation.position);
+            npcSelected.isMasked = true;
+        }
+        
     }
 }
