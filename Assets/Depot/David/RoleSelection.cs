@@ -182,7 +182,7 @@ public class RoleSelection : MonoBehaviour
         {
             GameManager.instance.p1Choice = m_P1Choice;
             GameManager.instance.p2Choice = m_P2Choice;
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
