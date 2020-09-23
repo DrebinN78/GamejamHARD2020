@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     {
         timerText.text = timer.ToString();
         UpdateCounter();
-        
     }
 
     private void AssignPlayers()
@@ -105,10 +104,14 @@ public class GameManager : MonoBehaviour
         takingAway = false;
     }
 
-    public void RespawnCoronaBoy(NPCBehaviour player_instance)
+    public void RespawnCoronaBoy(CoronaBoyBehaviour player_instance)
     {
         int npcSelector = Random.Range(0, unMaskedPeopleCounter);
         NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
+        if(npcSelected == null)
+        {
+            Debug.Log("Coroboy est arrêté");
+        }
         Transform respawnLocation = unMaskedPeople[npcSelector].transform;
         Transform NPCspawnLocation = player_instance.transform;
         player_instance.transform.Translate(respawnLocation.position);
