@@ -9,17 +9,17 @@ public class PoliceBehaviour : MonoBehaviour
         if (other.gameObject.GetComponent<NPCBehaviour>() != null)
         {
             Debug.Log(name + "Collide");
-            NPCBehaviour touchedCoronaBoy = other.gameObject.GetComponent<NPCBehaviour>();
+            NPCBehaviour touchedNPC = other.gameObject.GetComponent<NPCBehaviour>();
 
-            if (!touchedCoronaBoy.isMasked)
+            if (!touchedNPC.isMasked)
             {
-                touchedCoronaBoy.Mask();
-                touchedCoronaBoy.isMasked = true;
+                touchedNPC.Mask();
+                touchedNPC.isMasked = true;
             }
-            else if (!touchedCoronaBoy.isMasked)
-            {
-                GameManager.instance.RespawnCoronaBoy(touchedCoronaBoy);
-            }
+        }
+        else if (other.gameObject.GetComponent<CoronaBoyBehaviour>() != null) 
+        {
+            GameManager.instance.RespawnCoronaBoy(GameManager.instance.coroboyObject);
         }
         else return;
     }

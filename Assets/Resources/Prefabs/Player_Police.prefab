@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 8557495374717684676}
   - component: {fileID: 214557813}
   - component: {fileID: 214557812}
+  - component: {fileID: 1636708951}
   m_Layer: 8
   m_Name: Player_Police
   m_TagString: Player
@@ -108,15 +109,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 12
-  m_RunSpeed: 4
+  m_WalkSpeed: 4
+  m_RunSpeed: 12
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 0
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
+    XSensitivity: 9
+    YSensitivity: 9
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
@@ -332,6 +333,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183c9e6189e8aaf4ea631edec9adda85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1636708951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557495374722634276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6086d10cd15142445a340a2511f33be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUp1:
+    outlineDuration: 3
+    timeToRecharge: 6
+    abilityRecharging: 0
+    isOutlined: 0
 --- !u!1 &8557495374722634278
 GameObject:
   m_ObjectHideFlags: 0
