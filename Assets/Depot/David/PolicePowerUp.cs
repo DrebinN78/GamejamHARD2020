@@ -70,7 +70,7 @@ public class PolicePowerUp : MonoBehaviour
 
     private void PowerUp1Manager()
     {
-        if (coroCop.GetButtonDown("Ability1") && !powerUp1.abilityRecharging)
+        if (coroCop.GetButtonDown("Ability1") && !powerUp1.abilityRecharging && !powerUp2.taserOut)
         {
             powerUp1.abilityRecharging = true;
             powerUp1.isOutlined = true;
