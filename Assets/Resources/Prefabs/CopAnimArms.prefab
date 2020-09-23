@@ -29,6 +29,7 @@ Transform:
   m_Children:
   - {fileID: 6175242800421291048}
   - {fileID: 6175242800463360269}
+  - {fileID: 5229023355755658413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,8 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f83c253b55506f45b1618bf3f96c556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparkTaser: {fileID: 0}
-  sparkInitialPosition: {fileID: 0}
+  sparkTaser: {fileID: 5229023355755658412}
+  sparkInitialPosition: {fileID: 5229023355755658413}
 --- !u!95 &5924599550384619946
 Animator:
   serializedVersion: 3
@@ -98,6 +99,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparkTaser: {fileID: 0}
   sparkInitialPosition: {fileID: 0}
+--- !u!1001 &2603601762034912622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 422049394044191092}
+    m_Modifications:
+    - target: {fileID: 7832009390673981890, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_Name
+      value: TaserLightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981890, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+--- !u!1 &5229023355755658412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7832009390673981890, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+  m_PrefabInstance: {fileID: 2603601762034912622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5229023355755658413 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7832009390673981891, guid: f845cf7f622ef934cae426fbfc4d7807, type: 3}
+  m_PrefabInstance: {fileID: 2603601762034912622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5924599549725595366
 PrefabInstance:
   m_ObjectHideFlags: 0
