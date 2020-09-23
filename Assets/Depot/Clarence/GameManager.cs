@@ -113,14 +113,26 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int npcSelector = Random.Range(0, unMaskedPeopleCounter);
-            NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
-            Vector3 respawnLocation = unMaskedPeople[npcSelector].transform.position;
-            Vector3 NPCspawnLocation = player_instance.transform.position;
-            player_instance.transform.position = respawnLocation;
-            npcSelected.transform.position = NPCspawnLocation;
-            npcSelected.isMasked = true;
+            StartCoroutine(RespawnCoroboy(player_instance));
+            
         }
         
+    }
+    IEnumerator RespawnCoroboy(CoronaBoyBehaviour player_instance)
+    {
+        NPCBehaviour npcSelected = unMaskedPeople[0];
+        Vector3 respawnLocation = npcSelected.transform.position;
+        Vector3 NPCspawnLocation = player_instance.transform.position;
+        Quaternion respawnRotation = npcSelected.transform.rotation;
+        Quaternion NPCspawnRotation = player_instance.transform.rotation;
+        player_instance.gameObject.SetActive(false);
+        npcSelected.transform.position = NPCspawnLocation;
+        npcSelected.transform.rotation = NPCspawnRotation;
+        npcSelected.isMasked = true;
+        yield return new WaitForSecondsRealtime(3f);
+        player_instance.transform.position = respawnLocation;
+        player_instance.transform.rotation = respawnRotation;
+        player_instance.gameObject.SetActive(true);
+        yield return null;
     }
 }
