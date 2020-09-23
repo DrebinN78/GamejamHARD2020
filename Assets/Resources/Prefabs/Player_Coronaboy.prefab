@@ -318,8 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef52256dcfd9a684b904b58f2a6642e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 0}
+  fpsController: {fileID: 8557495374729209796}
   npcBehaviour: {fileID: 0}
+  crowPrefab: {fileID: 1216461265547808910, guid: cea478a8efeeeef41912e4f264c83961, type: 3}
+  crowDuration: 1
 --- !u!1 &8557495374722634278
 GameObject:
   m_ObjectHideFlags: 0
