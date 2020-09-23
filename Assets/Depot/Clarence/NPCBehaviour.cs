@@ -27,13 +27,11 @@ public class NPCBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agentSpeed = agent.speed;
         timer = wanderTime;
-
-        /*
+        
         if (!isMasked)
             UnMask();
         else
             Mask();
-            */
     }
 
     private void Update()
