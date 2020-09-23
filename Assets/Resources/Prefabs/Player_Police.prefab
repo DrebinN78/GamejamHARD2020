@@ -350,6 +350,15 @@ MonoBehaviour:
     timeToRecharge: 6
     abilityRecharging: 0
     isOutlined: 0
+  powerUp2:
+    immobilizationDuration: 5
+    timeToRecharge: 10
+    maxDistance: 15
+    taserOut: 0
+    hasShot: 0
+    layermask:
+      serializedVersion: 2
+      m_Bits: 4294967295
 --- !u!1 &8557495374722634278
 GameObject:
   m_ObjectHideFlags: 0
