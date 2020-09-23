@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5310896968784416144}
   - component: {fileID: 5310896968784416146}
   - component: {fileID: 5310896968784416147}
+  - component: {fileID: 141062710}
   m_Layer: 0
   m_Name: NPCBoy
   m_TagString: Untagged
@@ -62,20 +63,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMasked: 1
   mask: {fileID: 5310896970190377424}
---- !u!136 &5310896968931930199
-CapsuleCollider:
+  wanderRadius: 15
+  wanderTime: 5
+  originalPos: {x: 0, y: 0, z: 0}
+--- !u!195 &141062710
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6316410566573735966}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 5310896968784416145}
   m_Enabled: 1
-  m_Radius: 0.54
-  m_Height: 1.5188116
-  m_Direction: 1
-  m_Center: {x: 0.002016202, y: 0.65870684, z: -0.023641203}
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5310896970190377424
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +169,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &5310896968931930199
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316410566573735966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.54
+  m_Height: 1.5188116
+  m_Direction: 1
+  m_Center: {x: 0.002016202, y: 0.65870684, z: -0.023641203}
 --- !u!1001 &5310896968913373469
 PrefabInstance:
   m_ObjectHideFlags: 0
