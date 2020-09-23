@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     public Image maskedBar;
     public Image unmaskedBar;
 
-    public CoronaBoyBehaviour corocopObject;
-    public PoliceBehaviour coroboyObject;
+    public PoliceBehaviour corocopObject;
+    public CoronaBoyBehaviour coroboyObject;
 
     public FirstPersonController corocopClass;
     public FirstPersonController coroboyClass;
@@ -43,26 +43,22 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         //corocopObject = GetComponent<CoronaBoyBehaviour>();
-        //  coroboyObject = GetComponent<PoliceBehaviour>();
+        //coroboyObject = GetComponent<PoliceBehaviour>();
         //corocopClass = corocopObject.GetComponent<FirstPersonController>();
         //coroboyClass = coroboyObject.GetComponent<FirstPersonController>();
+        AssignPlayers();
     }
 
     private void Start()
     {
         timerText.text = timer.ToString();
         UpdateCounter();
-        AssignPlayers();
+        
     }
 
     private void AssignPlayers()
     {
-        if (p1Choice == -1)
-        {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
-        }
-        else if(p1Choice == 1)
+        if(p1Choice == 1)
         {
             corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
             coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
