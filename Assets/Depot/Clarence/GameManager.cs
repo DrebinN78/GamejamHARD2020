@@ -106,16 +106,21 @@ public class GameManager : MonoBehaviour
 
     public void RespawnCoronaBoy(CoronaBoyBehaviour player_instance)
     {
-        int npcSelector = Random.Range(0, unMaskedPeopleCounter);
-        NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
-        if(npcSelected == null)
+        if (unMaskedPeopleCounter == 0)
         {
             Debug.Log("Coroboy est arrêté");
+            return;
         }
-        Transform respawnLocation = unMaskedPeople[npcSelector].transform;
-        Transform NPCspawnLocation = player_instance.transform;
-        player_instance.transform.Translate(respawnLocation.position);
-        npcSelected.transform.Translate(NPCspawnLocation.position);
-        npcSelected.isMasked = true;
+        else
+        {
+            int npcSelector = Random.Range(0, unMaskedPeopleCounter);
+            NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
+            Transform respawnLocation = unMaskedPeople[npcSelector].transform;
+            Transform NPCspawnLocation = player_instance.transform;
+            player_instance.transform.Translate(respawnLocation.position);
+            npcSelected.transform.Translate(NPCspawnLocation.position);
+            npcSelected.isMasked = true;
+        }
+        
     }
 }
