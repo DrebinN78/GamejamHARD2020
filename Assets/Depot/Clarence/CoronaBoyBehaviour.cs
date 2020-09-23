@@ -9,8 +9,15 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [SerializeField] private FirstPersonController fpsController;
     [SerializeField] private NPCBehaviour npcBehaviour;
     [SerializeField] private GameObject crowPrefab;
-    [Range(1f,5f)]
-    [SerializeField] private float crowDuration;
+    [Range(1f, 5f)]
+    [SerializeField] private float crowDuration = 1f;
+    [Range(1f, 30f)]
+    [SerializeField] private float cooldownDurationAbility1 = 1f;
+    [Range(1f, 30f)]
+    [SerializeField] private float cooldownDurationAbility2 = 1f;
+
+    bool ability1ready;
+    bool ability2ready;
 
     void Ability1()
     {
@@ -32,7 +39,6 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
 
         if (other.gameObject.GetComponent<NPCBehaviour>() != null)
         {
@@ -50,14 +56,40 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     IEnumerator Ability1routine()
     {
-        GameObject crowd = Instantiate(crowPrefab);
+        GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
         yield return new WaitForSecondsRealtime(crowDuration);
         Destroy(crowd);
+        StartCoroutine(AbilityCoolDown(1));
         yield return null;
     }
 
     IEnumerator Ability2routine()
     {
+        StartCoroutine(AbilityCoolDown(2));
         yield return null;
+    }
+
+    IEnumerator AbilityCoolDown(int skilltocooldown)
+    {
+        if (skilltocooldown != 1)
+        {
+            ability2ready = false;
+            yield return new WaitForSecondsRealtime(cooldownDurationAbility2);
+        }
+        else
+        {
+            ability1ready = false;
+            yield return new WaitForSecondsRealtime(cooldownDurationAbility1);
+        }
+        if (skilltocooldown != 1)
+        {
+            ability2ready = true;
+        }
+        else
+        {
+            ability1ready = true;
+        }
+        yield return null;
+
     }
 }
