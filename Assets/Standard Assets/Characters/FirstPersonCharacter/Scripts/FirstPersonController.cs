@@ -51,17 +51,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Use this for initialization
         private void Start()
         {
-            if(gameObject.name == "Player_Police")
-            {
-                rewiredPlayer = ReInput.players.GetPlayer(1);
-                Debug.Log("Pouet");
-
-            }
-            else
-            {
-                rewiredPlayer = ReInput.players.GetPlayer(0);
-                Debug.Log("Prout");
-            }
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = GetComponentInChildren<Camera>();
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -230,7 +219,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+            m_IsWalking = !rewiredPlayer.GetButton("Run");
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
