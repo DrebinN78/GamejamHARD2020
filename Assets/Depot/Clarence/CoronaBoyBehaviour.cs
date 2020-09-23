@@ -21,8 +21,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [SerializeField] private float range = 1f;
     
 
-    bool ability1ready;
-    bool ability2ready;
+    bool ability1ready = true;
+    bool ability2ready = true;
 
     void Ability1()
     {
@@ -39,7 +39,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     void Ability2()
     {
-        if (ability1ready)
+        if (ability2ready)
         {
             StartCoroutine(Ability2routine());
         }
