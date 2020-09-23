@@ -115,10 +115,10 @@ public class GameManager : MonoBehaviour
         {
             int npcSelector = Random.Range(0, unMaskedPeopleCounter);
             NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
-            Transform respawnLocation = unMaskedPeople[npcSelector].transform;
-            Transform NPCspawnLocation = player_instance.transform;
-            player_instance.transform.Translate(respawnLocation.position);
-            npcSelected.transform.Translate(NPCspawnLocation.position);
+            Vector3 respawnLocation = unMaskedPeople[npcSelector].transform.position;
+            Vector3 NPCspawnLocation = player_instance.transform.position;
+            player_instance.transform.position = respawnLocation;
+            npcSelected.transform.position = NPCspawnLocation;
             npcSelected.isMasked = true;
         }
         
