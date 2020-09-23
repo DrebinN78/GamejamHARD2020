@@ -11207,6 +11207,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1663871457, guid: 21788464748ce344c92006ff64d57428, type: 3}
+      propertyPath: crowDuration
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 84879208021949736, guid: 21788464748ce344c92006ff64d57428, type: 3}
       propertyPath: m_Layer
       value: 9
