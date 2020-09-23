@@ -5,6 +5,7 @@ using UnityEngine;
 public class CorocopAnimationsEvent : MonoBehaviour
 {
     [SerializeField] private GameObject sparkTaser;
+    [SerializeField] private PolicePowerUp policePower;
 
     public void DisableSelf()
     {
@@ -36,5 +37,15 @@ public class CorocopAnimationsEvent : MonoBehaviour
         {
             sparkTaser.SetActive(true);
         }
+    }
+
+    public void TaserIn()
+    {
+        policePower.ForceTaserIn();
+    }
+
+    public void TalkieIn()
+    {
+        policePower.ForceTalkieIn();
     }
 }

@@ -14,6 +14,7 @@ public class PolicePowerUp : MonoBehaviour
         public float timeToRecharge;
         public bool abilityRecharging;
         public bool isOutlined;
+        public bool talkieOut;
         public GameObject talkieArm;
 
     };
@@ -79,6 +80,7 @@ public class PolicePowerUp : MonoBehaviour
             powerUp1.talkieArm.SetActive(true);
             powerUp1.abilityRecharging = true;
             powerUp1.isOutlined = true;
+            powerUp1.talkieOut = true;
             GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 10;
         }
 
@@ -101,7 +103,7 @@ public class PolicePowerUp : MonoBehaviour
 
     private void PowerUp2Manager()
     {
-        if(coroCop.GetButtonDown("Ability2") && !powerUp2.hasShot)
+        if(coroCop.GetButtonDown("Ability2") && !powerUp2.hasShot && !powerUp1.talkieOut)
         {
             if (!powerUp2.taserOut)
             {
@@ -112,8 +114,6 @@ public class PolicePowerUp : MonoBehaviour
             else
             {
                 powerUp2.taserAnim.SetTrigger("PutAwayTaser");
-                crosshair.enabled = false;
-                powerUp2.taserOut = false;
             }
         }
 
@@ -145,6 +145,17 @@ public class PolicePowerUp : MonoBehaviour
             }
         }
 
+    }
+
+    // Pour les events
+    public void ForceTaserIn()
+    {
+        crosshair.enabled = false;
+        powerUp2.taserOut = false;
+    }
+    public void ForceTalkieIn()
+    {
+        powerUp1.talkieOut = false;
     }
     
 
