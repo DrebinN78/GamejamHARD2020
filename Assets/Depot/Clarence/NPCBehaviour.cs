@@ -27,11 +27,17 @@ public class NPCBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agentSpeed = agent.speed;
         timer = wanderTime;
-        
+
         if (!isMasked)
+        {
+            Debug.Log("is not masked");
             UnMask();
+        }
         else
+        {
+            Debug.Log("is masked");
             Mask();
+        }
     }
 
     private void Update()
@@ -62,7 +68,7 @@ public class NPCBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Limits")
+        if (other.gameObject.tag == "Limits")
         {
             Debug.Log("Exit limits");
             isInLimits = false;
@@ -96,11 +102,12 @@ public class NPCBehaviour : MonoBehaviour
         {
             if (coronaBoy == this)
             {
+                Debug.Log("blablou");
                 GameManager.instance.maskedPeople.Remove(coronaBoy);
-                GameManager.instance.UpdateCounter();
-                return;
+                break;
             }
         }
+        GameManager.instance.UpdateCounter();
     }
 
     public void Mask()
@@ -112,9 +119,9 @@ public class NPCBehaviour : MonoBehaviour
             if (coronaBoy == this)
             {
                 GameManager.instance.unMaskedPeople.Remove(coronaBoy);
-                GameManager.instance.UpdateCounter();
-                return;
+                break;
             }
         }
+        GameManager.instance.UpdateCounter();
     }
 }
