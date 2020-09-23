@@ -58,6 +58,10 @@ public class PolicePowerUp : MonoBehaviour
         PowerUp1Manager();
 
         PowerUp2Manager();
+
+
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Debug.DrawRay(ray.origin, ray.direction * powerUp2.maxDistance, Color.green);
     }
 
     private void PowerUp1Manager()
@@ -100,11 +104,9 @@ public class PolicePowerUp : MonoBehaviour
             }
         }
 
-        if(coroCop.GetButtonDown("ShootGun") && powerUp2.taserOut)
+        if(coroCop.GetButtonDown("ShootGun") && powerUp2.taserOut && !powerUp2.hasShot)
         {
             powerUp2.hasShot = true;
-
-            
 
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
@@ -112,8 +114,19 @@ public class PolicePowerUp : MonoBehaviour
             {
                 if(hit.collider.tag == "Player")
                 {
-                    //hit.collider.gameObject.GetComponent<FirstPersonController>().Test();
+                    hit.collider.gameObject.GetComponent<FirstPersonController>().Stun(powerUp2.immobilizationDuration);
                 }
+            }
+        }
+
+        if (powerUp2.hasShot)
+        {
+            timer2 += Time.deltaTime;
+
+            if(timer2 > powerUp2.timeToRecharge)
+            {
+                powerUp2.hasShot = false;
+                timer2 = 0;
             }
         }
 
