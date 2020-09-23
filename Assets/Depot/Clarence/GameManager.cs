@@ -27,15 +27,25 @@ public class GameManager : MonoBehaviour
     public Image maskedBar;
     public Image unmaskedBar;
 
+    public CoronaBoyBehaviour corocopObject;
+    public PoliceBehaviour coroboyObject;
+
+    public FirstPersonController corocopClass;
+    public FirstPersonController coroboyClass;
+
     public List<NPCBehaviour> unMaskedPeople;
     public List<NPCBehaviour> maskedPeople;
 
-    public int p1Choice;
-    public int p2Choice;
+    public int p1Choice = 0;
+    public int p2Choice = 0;
 
     private void Awake()
     {
         instance = this;
+        //corocopObject = GetComponent<CoronaBoyBehaviour>();
+        //  coroboyObject = GetComponent<PoliceBehaviour>();
+        //corocopClass = corocopObject.GetComponent<FirstPersonController>();
+        //coroboyClass = coroboyObject.GetComponent<FirstPersonController>();
     }
 
     private void Start()
@@ -47,17 +57,20 @@ public class GameManager : MonoBehaviour
 
     private void AssignPlayers()
     {
-        FirstPersonController corocopClass = GameObject.Find("Player_Police").GetComponent<FirstPersonController>();
-        FirstPersonController coroboyClass = GameObject.Find("Player_CoronaBoy").GetComponent<FirstPersonController>();
-        if(p1Choice != 1)
+        if (p1Choice == -1)
         {
             corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
             coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
         }
-        else
+        else if(p1Choice == 1)
         {
             corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
             coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+        }
+        else
+        {
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
         }
     }
 
