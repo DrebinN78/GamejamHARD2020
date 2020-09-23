@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public GameObject endScreen;
+
     public float timer = 60f;
     bool takingAway = false;
 
@@ -25,8 +27,8 @@ public class GameManager : MonoBehaviour
     public Image maskedBar;
     public Image unmaskedBar;
 
-    public CoronaBoyBehaviour corocopObject;
-    public PoliceBehaviour coroboyObject;
+    public PoliceBehaviour corocopObject;
+    public CoronaBoyBehaviour coroboyObject;
 
     public FirstPersonController corocopClass;
     public FirstPersonController coroboyClass;
@@ -41,26 +43,21 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         //corocopObject = GetComponent<CoronaBoyBehaviour>();
-        //  coroboyObject = GetComponent<PoliceBehaviour>();
+        //coroboyObject = GetComponent<PoliceBehaviour>();
         //corocopClass = corocopObject.GetComponent<FirstPersonController>();
         //coroboyClass = coroboyObject.GetComponent<FirstPersonController>();
+        AssignPlayers();
     }
 
     private void Start()
     {
         timerText.text = timer.ToString();
         UpdateCounter();
-        AssignPlayers();
     }
 
     private void AssignPlayers()
     {
-        if (p1Choice == -1)
-        {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
-        }
-        else if(p1Choice == 1)
+        if(p1Choice == 1)
         {
             corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
             coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
@@ -76,6 +73,14 @@ public class GameManager : MonoBehaviour
     {
         if (!takingAway && timer > 0)
             StartCoroutine(UpdateTimer());
+        else if (timer <= 0)
+        {
+            Debug.Log("FinishedGame");
+            if (!endScreen.activeSelf)
+            {
+                endScreen.SetActive(true);
+            }
+        }
     }
 
     public void UpdateCounter()
@@ -99,10 +104,14 @@ public class GameManager : MonoBehaviour
         takingAway = false;
     }
 
-    public void RespawnCoronaBoy(NPCBehaviour player_instance)
+    public void RespawnCoronaBoy(CoronaBoyBehaviour player_instance)
     {
         int npcSelector = Random.Range(0, unMaskedPeopleCounter);
         NPCBehaviour npcSelected = unMaskedPeople[npcSelector];
+        if(npcSelected == null)
+        {
+            Debug.Log("Coroboy est arrêté");
+        }
         Transform respawnLocation = unMaskedPeople[npcSelector].transform;
         Transform NPCspawnLocation = player_instance.transform;
         player_instance.transform.Translate(respawnLocation.position);
