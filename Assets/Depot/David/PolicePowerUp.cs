@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using Rewired;
 
@@ -27,6 +28,8 @@ public class PolicePowerUp : MonoBehaviour
         public LayerMask layermask;
 
     };
+    
+    private Image crosshair;
 
     private float timer1 = 0;
     private float timer2 = 0;
@@ -42,6 +45,7 @@ public class PolicePowerUp : MonoBehaviour
     private void Start()
     {
         cam = GetComponentInChildren<Camera>();
+        crosshair = GetComponentInChildren<Image>();
 
         if(GameManager.instance.p1Choice == 1)
         {
@@ -96,10 +100,12 @@ public class PolicePowerUp : MonoBehaviour
         {
             if (!powerUp2.taserOut)
             {
+                crosshair.enabled = true;
                 powerUp2.taserOut = true;
             }
             else
             {
+                crosshair.enabled = false;
                 powerUp2.taserOut = false;
             }
         }
