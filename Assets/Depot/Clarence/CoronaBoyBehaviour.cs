@@ -94,6 +94,11 @@ public class CoronaBoyBehaviour : MonoBehaviour
             timer2 += Time.deltaTime;
             timeRatio2 = timer2 / timeBeforeFirstActivationAbility2;
             coroboySkill2UI.fillAmount = timeRatio2;
+
+            if(timer2 > timeBeforeFirstActivationAbility2)
+            {
+                ability2Activated = true;
+            }
         }
     }
 
