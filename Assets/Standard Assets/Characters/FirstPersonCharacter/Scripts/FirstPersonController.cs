@@ -47,6 +47,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private AudioSource m_AudioSource;
         [SerializeField]
         private bool isStun;
+        [SerializeField]
+        private GameObject spark;
 
         //Animation
         private Animator m_Anim;
@@ -287,8 +289,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         IEnumerator TimeBeforeUnstun(float time)
         {
             Debug.LogWarning("Player Stun");
+            spark.SetActive(true);
             isStun = true;
             yield return new WaitForSeconds(time);
+            spark.SetActive(false);
             isStun = false;
             Debug.LogWarning("Player UnStun");
         }
