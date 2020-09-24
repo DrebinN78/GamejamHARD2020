@@ -133,6 +133,7 @@ public class GameManager : MonoBehaviour
         player_instance.transform.position = respawnLocation;
         player_instance.transform.rotation = respawnRotation;
         player_instance.gameObject.SetActive(true);
+        UpdateCounter();
         yield return null;
     }
 }
