@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class CoronaBoyBehaviour : MonoBehaviour
@@ -19,10 +20,28 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [SerializeField] private float cooldownDurationAbility2 = 1f;
     [Range(1f, 1000f)]
     [SerializeField] private float range = 250f;
-    
 
+    private Image coroboySkill1UI;
+    private Image coroboySkill2UI;
     bool ability1ready = true;
     bool ability2ready = true;
+    bool ability2Activated = false;
+    private float timer1;
+    private float timeRatio1;
+    private float timer2;
+    private float timeRatio2;
+
+    [Range(1f, 1000f)]
+    [SerializeField] private float timeBeforeFirstActivationAbility2 = 150f;
+
+    private GameObject crowd;
+
+
+    private void Start()
+    {
+        coroboySkill1UI = GameObject.Find("CoroboySkill1").GetComponent<Image>();
+        coroboySkill2UI = GameObject.Find("CoroboySkill2").GetComponent<Image>();
+    }
 
     void Ability1()
     {
@@ -39,13 +58,13 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     void Ability2()
     {
-        if (ability2ready)
+        if (ability2ready && ability2Activated)
         {
             StartCoroutine(Ability2routine());
         }
         else
         {
-            Debug.Log("Coroboy second ability is on cooldown");
+            Debug.Log("Coroboy second ability is on cooldown or deactivated");
         }
     }
 
@@ -58,6 +77,40 @@ public class CoronaBoyBehaviour : MonoBehaviour
         if(fpsController.rewiredPlayer.GetButtonDown("Ability2"))
         {
             Ability2();
+        }
+
+        if (!ability1ready)
+        {
+            timer1 += Time.deltaTime;
+            timeRatio1 = timer1 / (cooldownDurationAbility1 + crowDuration);
+            coroboySkill1UI.fillAmount = timeRatio1;
+
+            if(timer1 > (cooldownDurationAbility1 + crowDuration))
+            {
+                ability1ready = true;
+            }
+        }
+        if (!ability2ready)
+        {
+            timer2 += Time.deltaTime;
+            timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
+            coroboySkill2UI.fillAmount = timeRatio2;
+
+            if(timer2 > (cooldownDurationAbility2 + rageDuration))
+            {
+                ability2ready = true;
+            }
+        }
+        if (!ability2Activated)
+        {
+            timer2 += Time.deltaTime;
+            timeRatio2 = timer2 / timeBeforeFirstActivationAbility2;
+            coroboySkill2UI.fillAmount = timeRatio2;
+
+            if(timer2 > timeBeforeFirstActivationAbility2)
+            {
+                ability2Activated = true;
+            }
         }
     }
 
@@ -94,7 +147,10 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     IEnumerator Ability1routine()
     {
-        GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        ability1ready = false;
+        crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        coroboySkill1UI.fillAmount = 0;
+        timer1 = 0;
         yield return new WaitForSecondsRealtime(crowDuration);
         Destroy(crowd);
         StartCoroutine(AbilityCoolDown(1));
@@ -103,6 +159,9 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     IEnumerator Ability2routine()
     {
+        ability2ready = false;
+        timer2 = 0;
+        coroboySkill2UI.fillAmount = 0;
         //List comprenant tout les NPC a convertir
         List<NPCBehaviour> npcList = new List<NPCBehaviour>();
         foreach(NPCBehaviour npc in GameManager.instance.maskedPeople)
@@ -150,16 +209,19 @@ public class CoronaBoyBehaviour : MonoBehaviour
         yield return null;
     }
 
+    public void DestroyCurrentCrowd(float time)
+    {
+        Destroy(crowd, time);
+    }
+
     IEnumerator AbilityCoolDown(int skilltocooldown)
     {
         if (skilltocooldown != 1)
         {
-            ability2ready = false;
             yield return new WaitForSecondsRealtime(cooldownDurationAbility2);
         }
         else
         {
-            ability1ready = false;
             yield return new WaitForSecondsRealtime(cooldownDurationAbility1);
         }
         if (skilltocooldown != 1)
