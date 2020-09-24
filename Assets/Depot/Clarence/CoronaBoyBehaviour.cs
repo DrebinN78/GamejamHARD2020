@@ -113,18 +113,24 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             npcList.Add(npc);
         }
-        foreach(NPCBehaviour pos in npcList)
+        List<NPCBehaviour> npcToIgnore = new List<NPCBehaviour>();
+        foreach (NPCBehaviour pos in npcList)
         {
+            
             if (!CheckDistance(transform.position, pos.transform.position, range))
-            { 
-                npcList.Remove(pos);
+            {
+                npcToIgnore.Add(pos);
             }
             else 
             {
                 Debug.Log("Coronaboy converted" + gameObject.name);
             }
         }
-
+        foreach(NPCBehaviour npc in npcToIgnore)
+        {
+            npcList.Remove(npc);
+        }
+        npcToIgnore = null;
         //faire foncer tous les npcs de la liste "npclist" sur le corocop
         foreach (NPCBehaviour npc in npcList)
         {
