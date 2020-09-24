@@ -53,6 +53,11 @@ public class NPCBehaviour : MonoBehaviour
     {
         if (isInLimits && !enraged)
         {
+            if (agent.speed == 0f)
+            {
+                agent.speed = agentSpeed;
+            }
+
             timer += Time.deltaTime;
 
             if (timer >= wanderTime)
@@ -78,6 +83,11 @@ public class NPCBehaviour : MonoBehaviour
 
         if (!isInLimits && !goBackToOrigin && !enraged)
         {
+            if (agent.speed == 0f)
+            {
+                agent.speed = agentSpeed;
+            }
+
             goBackToOrigin = true;
             // Très très brut comme façon de le remettre dans les limites, à améliorer si possible
             StartCoroutine(PauseAgentForSeconds(0.5f));
