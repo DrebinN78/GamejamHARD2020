@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static int maskedPeopleCounter = 0;
     public static int unMaskedPeopleCounter = 0;
 
-    float allNPCs;
+    public float allNPCs;
 
     public Text timerText;
 
@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timerText.text = timer.ToString();
-        allNPCs = maskedPeople.Count + unMaskedPeople.Count;
         UpdateCounter();
     }
 
@@ -101,9 +100,13 @@ public class GameManager : MonoBehaviour
     IEnumerator UpdateTimer()
     {
         takingAway = true;
+
+        string minutes = ((int)timer / 60).ToString("00");
+        string seconds = (timer%60).ToString("00");
+
+        timerText.text = minutes + ":" + seconds;
         yield return new WaitForSeconds(1);
         timer -= 1;
-        timerText.text = timer.ToString();
         takingAway = false;
     }
 
