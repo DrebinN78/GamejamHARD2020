@@ -66,6 +66,7 @@ MonoBehaviour:
   wanderRadius: 15
   wanderTime: 5
   originalPos: {x: 0, y: 0, z: 0}
+  enraged: 0
 --- !u!195 &141062710
 NavMeshAgent:
   m_ObjectHideFlags: 0
