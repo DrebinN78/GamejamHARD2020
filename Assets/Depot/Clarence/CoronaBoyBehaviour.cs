@@ -34,6 +34,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [Range(1f, 1000f)]
     [SerializeField] private float timeBeforeFirstActivationAbility2 = 150f;
 
+    private GameObject crowd;
+
 
     private void Start()
     {
@@ -146,7 +148,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
     IEnumerator Ability1routine()
     {
         ability1ready = false;
-        GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
         coroboySkill1UI.fillAmount = 0;
         timer1 = 0;
         yield return new WaitForSecondsRealtime(crowDuration);
@@ -205,6 +207,11 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
         StartCoroutine(AbilityCoolDown(2));
         yield return null;
+    }
+
+    public void DestroyCurrentCrowd(float time)
+    {
+        Destroy(crowd, time);
     }
 
     IEnumerator AbilityCoolDown(int skilltocooldown)
