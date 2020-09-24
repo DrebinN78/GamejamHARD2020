@@ -18223,6 +18223,10 @@ PrefabInstance:
       propertyPath: coroboyClass
       value: 
       objectReference: {fileID: 1252348518}
+    - target: {fileID: 7544530892584245820, guid: b37b3feb4869ae344a9c5b7be4f8490c, type: 3}
+      propertyPath: timer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7544530892584245821, guid: b37b3feb4869ae344a9c5b7be4f8490c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.8554325
