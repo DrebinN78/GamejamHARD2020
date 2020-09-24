@@ -22,12 +22,18 @@ public class NPCBehaviour : MonoBehaviour
     private bool goBackToOrigin;
     public Vector3 originalPos;
 
+    //Animation
+    private Animator anim;
+    [SerializeField]
+    private bool isMoving;
+
     public bool enraged;
 
     private void Start()
     {
         originalPos = transform.position;
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
         agentSpeed = agent.speed;
         timer = wanderTime;
 
@@ -60,6 +66,14 @@ public class NPCBehaviour : MonoBehaviour
         if (enraged)
         {
             agent.SetDestination(GameObject.Find("Player_Police").transform.position);
+            if(agent.remainingDistance < 2f)
+            {
+                agent.speed = 0;
+            }
+            else
+            {
+                agent.speed = agentSpeed;
+            }
         }
 
         if (!isInLimits && !goBackToOrigin && !enraged)
@@ -68,6 +82,17 @@ public class NPCBehaviour : MonoBehaviour
             // Très très brut comme façon de le remettre dans les limites, à améliorer si possible
             StartCoroutine(PauseAgentForSeconds(0.5f));
             agent.SetDestination(originalPos);
+        }
+
+        if (agent.velocity != Vector3.zero && !isMoving)
+        {
+            isMoving = true;
+            anim.SetBool("IsWalk", true);
+        }
+        else if(agent.velocity == Vector3.zero)
+        {
+            anim.SetBool("IsWalk", false);
+            isMoving = false;
         }
 
     }
