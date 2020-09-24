@@ -5,17 +5,10 @@ using UnityEngine.AI;
 
 public class AutomaticObstacleMeshAgent : MonoBehaviour
 {
-    // Put this on any obstacle that has a boxCollider
-
-    private BoxCollider collider;
-    private NavMeshObstacle obstacle;
-
+    //Unused script, no time to clean
     void Start()
     {
-        collider = GetComponent<BoxCollider>();
-        obstacle = gameObject.AddComponent<NavMeshObstacle>();
-        obstacle.size = collider.size;
-        obstacle.size += new Vector3(0.5f, 0.5f, 5f);
+        enabled = false;
     }
     
 }
