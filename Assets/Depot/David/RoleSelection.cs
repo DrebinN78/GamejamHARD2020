@@ -173,15 +173,13 @@ public class RoleSelection : MonoBehaviour
             return true;
         return false;
     }
-    /*
+    
     private void OnLevelWasLoaded(int level)
     {
+        // Ne sert plus à retirer si possible en plus du script dans la scène principale
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            GameManager.instance.p1Choice = m_P1Choice;
-            GameManager.instance.p2Choice = m_P2Choice;
             Destroy(gameObject);
         }
     }
-    */
 }
