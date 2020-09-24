@@ -31,7 +31,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5638121744821300982}
-  - {fileID: 5310896970190377427}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -66,6 +65,7 @@ MonoBehaviour:
   wanderRadius: 15
   wanderTime: 5
   originalPos: {x: 0, y: 0, z: 0}
+  isMoving: 0
   enraged: 0
 --- !u!195 &141062710
 NavMeshAgent:
@@ -114,12 +114,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5310896970190377424}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.00000016888312, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: 0.045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5310896968784416144}
-  m_RootOrder: 1
+  m_Father: {fileID: 7806884860309053586}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5310896970190377437
 MeshFilter:
@@ -253,5 +253,10 @@ Transform:
 --- !u!1 &6316410566573735966 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2169746930599528707, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
+  m_PrefabInstance: {fileID: 5310896968913373469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7806884860309053586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2730228991131609487, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
   m_PrefabInstance: {fileID: 5310896968913373469}
   m_PrefabAsset: {fileID: 0}
