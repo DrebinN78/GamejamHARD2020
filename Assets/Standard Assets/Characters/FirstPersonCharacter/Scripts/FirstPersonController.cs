@@ -285,16 +285,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             StartCoroutine(TimeBeforeUnstun(time));
         }
+        public void Unstun()
+        {
+            spark.SetActive(false);
+            isStun = false;
+        }
 
         IEnumerator TimeBeforeUnstun(float time)
         {
-            Debug.LogWarning("Player Stun");
             spark.SetActive(true);
             isStun = true;
             yield return new WaitForSeconds(time);
             spark.SetActive(false);
             isStun = false;
-            Debug.LogWarning("Player UnStun");
         }
 
 

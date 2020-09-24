@@ -19,6 +19,7 @@ public class PoliceBehaviour : MonoBehaviour
         }
         else if (other.gameObject.GetComponent<CoronaBoyBehaviour>() != null) 
         {
+            other.gameObject.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().Unstun();
             GameManager.instance.RespawnCoronaBoy(GameManager.instance.coroboyObject);
         }
         else return;
