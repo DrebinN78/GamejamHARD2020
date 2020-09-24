@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
@@ -44,6 +45,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        [SerializeField]
+        private bool isStun;
+        [SerializeField]
+        private GameObject spark;
 
         //Animation
         private Animator m_Anim;
@@ -89,7 +94,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
-
 
         private void PlayLandingSound()
         {
@@ -210,60 +214,87 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
-            // Read input
-            float horizontal = rewiredPlayer.GetAxis("MoveLeftRight");
-            float vertical = rewiredPlayer.GetAxis("MoveUpDown");
+            if (!isStun)
+            {// Read input
+                float horizontal = rewiredPlayer.GetAxis("MoveLeftRight");
+                float vertical = rewiredPlayer.GetAxis("MoveUpDown");
 
-            bool waswalking = m_IsWalking;
+                bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
-            // On standalone builds, walk/run speed is modified by a key press.
-            // keep track of whether or not the character is walking or running
-            m_IsWalking = !rewiredPlayer.GetButton("Run");
+                // On standalone builds, walk/run speed is modified by a key press.
+                // keep track of whether or not the character is walking or running
+                m_IsWalking = rewiredPlayer.GetButton("Run");
 #endif
-            // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
-            m_Input = new Vector2(horizontal, vertical);
+                // set the desired speed to be walking or running
+                speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+                m_Input = new Vector2(horizontal, vertical);
 
-            // normalize input if it exceeds 1 in combined length:
-            if (m_Input.sqrMagnitude > 1)
-            {
-                m_Input.Normalize();
-            }
-
-            // handle speed change to give an fov kick
-            // only if the player is going to a run, is running and the fovkick is to be used
-            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
-            {
-                StopAllCoroutines();
-                StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
-            }
-            
-            if (horizontal != 0 || vertical != 0)
-            {
-                if (m_IsWalking)
+                // normalize input if it exceeds 1 in combined length:
+                if (m_Input.sqrMagnitude > 1)
                 {
-                    m_Anim.SetBool("IsWalk", true);
-                    m_Anim.SetBool("IsRun", false);
+                    m_Input.Normalize();
+                }
+
+                // handle speed change to give an fov kick
+                // only if the player is going to a run, is running and the fovkick is to be used
+                if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
+                {
+                    StopAllCoroutines();
+                    StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());
+                }
+
+                if (horizontal != 0 || vertical != 0)
+                {
+                    if (m_IsWalking)
+                    {
+                        m_Anim.SetBool("IsWalk", true);
+                        m_Anim.SetBool("IsRun", false);
+                    }
+                    else
+                    {
+                        m_Anim.SetBool("IsRun", true);
+                        m_Anim.SetBool("IsWalk", false);
+                    }
                 }
                 else
                 {
-                    m_Anim.SetBool("IsRun", true);
                     m_Anim.SetBool("IsWalk", false);
+                    m_Anim.SetBool("IsRun", false);
+                    m_Anim.SetBool("Idle", true);
                 }
             }
             else
             {
+                speed = 0f;
                 m_Anim.SetBool("IsWalk", false);
-                m_Anim.SetBool("IsRun",false);
+                m_Anim.SetBool("IsRun", false);
                 m_Anim.SetBool("Idle", true);
             }
+
+            
         }
 
 
         private void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
+        }
+
+        public void Stun(float time)
+        {
+            StartCoroutine(TimeBeforeUnstun(time));
+        }
+
+        IEnumerator TimeBeforeUnstun(float time)
+        {
+            Debug.LogWarning("Player Stun");
+            spark.SetActive(true);
+            isStun = true;
+            yield return new WaitForSeconds(time);
+            spark.SetActive(false);
+            isStun = false;
+            Debug.LogWarning("Player UnStun");
         }
 
 
