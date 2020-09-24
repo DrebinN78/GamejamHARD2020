@@ -19,7 +19,10 @@ public class NPCBehaviour : MonoBehaviour
     private float wanderTime;
     private float timer;
     private bool isInLimits = true;
+    private bool goBackToOrigin;
     public Vector3 originalPos;
+
+    public bool enraged;
 
     private void Start()
     {
@@ -27,16 +30,22 @@ public class NPCBehaviour : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agentSpeed = agent.speed;
         timer = wanderTime;
-        
+
         if (!isMasked)
+        {
+            Debug.Log("is not masked");
             UnMask();
+        }
         else
+        {
+            Debug.Log("is masked");
             Mask();
+        }
     }
 
     private void Update()
     {
-        if (isInLimits)
+        if (isInLimits && !enraged)
         {
             timer += Time.deltaTime;
 
@@ -47,6 +56,20 @@ public class NPCBehaviour : MonoBehaviour
                 timer = 0;
             }
         }
+
+        if (enraged)
+        {
+            agent.SetDestination(GameObject.Find("Player_Police").transform.position);
+        }
+
+        if (!isInLimits && !goBackToOrigin && !enraged)
+        {
+            goBackToOrigin = true;
+            // Très très brut comme façon de le remettre dans les limites, à améliorer si possible
+            StartCoroutine(PauseAgentForSeconds(0.5f));
+            agent.SetDestination(originalPos);
+        }
+
     }
 
     Vector3 RandomNavSphere(Vector3 pos, float dist, int layermask)
@@ -62,13 +85,10 @@ public class NPCBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Limits")
+        if (other.gameObject.tag == "Limits")
         {
             Debug.Log("Exit limits");
             isInLimits = false;
-            // Très très brut comme façon de le remettre dans les limites, à améliorer si possible
-            StartCoroutine(PauseAgentForSeconds(3f));
-            agent.SetDestination(originalPos);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -76,6 +96,7 @@ public class NPCBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Limits")
         {
             Debug.Log("Enter limits");
+            goBackToOrigin = false;
             isInLimits = true;
         }
     }
@@ -96,11 +117,12 @@ public class NPCBehaviour : MonoBehaviour
         {
             if (coronaBoy == this)
             {
+                Debug.Log("blablou");
                 GameManager.instance.maskedPeople.Remove(coronaBoy);
-                GameManager.instance.UpdateCounter();
-                return;
+                break;
             }
         }
+        GameManager.instance.UpdateCounter();
     }
 
     public void Mask()
@@ -112,9 +134,10 @@ public class NPCBehaviour : MonoBehaviour
             if (coronaBoy == this)
             {
                 GameManager.instance.unMaskedPeople.Remove(coronaBoy);
-                GameManager.instance.UpdateCounter();
-                return;
+                break;
             }
         }
+        GameManager.instance.UpdateCounter();
     }
+    
 }
