@@ -25,10 +25,14 @@ public class CoronaBoyBehaviour : MonoBehaviour
     private Image coroboySkill2UI;
     bool ability1ready = true;
     bool ability2ready = true;
+    bool ability2Activated = false;
     private float timer1;
     private float timeRatio1;
     private float timer2;
     private float timeRatio2;
+
+    [Range(1f, 1000f)]
+    [SerializeField] private float timeBeforeFirstActivationAbility2 = 150f;
 
 
     private void Start()
@@ -52,13 +56,13 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     void Ability2()
     {
-        if (ability2ready)
+        if (ability2ready && ability2Activated)
         {
             StartCoroutine(Ability2routine());
         }
         else
         {
-            Debug.Log("Coroboy second ability is on cooldown");
+            Debug.Log("Coroboy second ability is on cooldown or deactivated");
         }
     }
 
@@ -83,6 +87,12 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             timer2 += Time.deltaTime;
             timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
+            coroboySkill2UI.fillAmount = timeRatio2;
+        }
+        if (!ability2Activated)
+        {
+            timer2 += Time.deltaTime;
+            timeRatio2 = timer2 / timeBeforeFirstActivationAbility2;
             coroboySkill2UI.fillAmount = timeRatio2;
         }
     }
@@ -123,6 +133,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         ability1ready = false;
         GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
         coroboySkill1UI.fillAmount = 0;
+        timer1 = 0;
         yield return new WaitForSecondsRealtime(crowDuration);
         Destroy(crowd);
         StartCoroutine(AbilityCoolDown(1));
@@ -132,6 +143,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
     IEnumerator Ability2routine()
     {
         ability2ready = false;
+        timer2 = 0;
         coroboySkill2UI.fillAmount = 0;
         //List comprenant tout les NPC a convertir
         List<NPCBehaviour> npcList = new List<NPCBehaviour>();
@@ -193,12 +205,10 @@ public class CoronaBoyBehaviour : MonoBehaviour
         if (skilltocooldown != 1)
         {
             ability2ready = true;
-            timer2 = 0;
         }
         else
         {
             ability1ready = true;
-            timer1 = 0;
         }
         yield return null;
 
