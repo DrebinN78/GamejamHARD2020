@@ -52,13 +52,13 @@ public class PolicePowerUp : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
         crosshair = GetComponentInChildren<Image>();
 
-        if(GameManager.instance.p1Choice == 1)
+        if(PlayerPrefs.GetInt("P1Choice") == 1)
         {
-            coroCop = ReInput.players.GetPlayer(1);
+            coroCop = ReInput.players.GetPlayer(0);
         }
         else
         {
-            coroCop = ReInput.players.GetPlayer(0);
+            coroCop = ReInput.players.GetPlayer(1);
         }
     }
 
