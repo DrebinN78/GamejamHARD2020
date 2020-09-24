@@ -82,12 +82,22 @@ public class CoronaBoyBehaviour : MonoBehaviour
             timer1 += Time.deltaTime;
             timeRatio1 = timer1 / (cooldownDurationAbility1 + crowDuration);
             coroboySkill1UI.fillAmount = timeRatio1;
+
+            if(timer1 > (cooldownDurationAbility1 + crowDuration))
+            {
+                ability1ready = true;
+            }
         }
         if (!ability2ready)
         {
             timer2 += Time.deltaTime;
             timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
             coroboySkill2UI.fillAmount = timeRatio2;
+
+            if(timer2 > (cooldownDurationAbility2 + rageDuration))
+            {
+                ability2ready = true;
+            }
         }
         if (!ability2Activated)
         {
