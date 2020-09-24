@@ -94,6 +94,18 @@ public class NPCBehaviour : MonoBehaviour
             agent.SetDestination(originalPos);
         }
 
+        if(agent.remainingDistance < 0.1f)
+        {
+            anim.SetBool("IsWalk", false);
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+            anim.SetBool("IsWalk", true);
+        }
+
+        /*
         if (agent.velocity != Vector3.zero && !isMoving)
         {
             isMoving = true;
@@ -104,7 +116,7 @@ public class NPCBehaviour : MonoBehaviour
             anim.SetBool("IsWalk", false);
             isMoving = false;
         }
-
+        */
     }
 
     Vector3 RandomNavSphere(Vector3 pos, float dist, int layermask)
