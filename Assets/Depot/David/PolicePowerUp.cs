@@ -10,7 +10,9 @@ public class PolicePowerUp : MonoBehaviour
     [System.Serializable]
     struct PowerUp1
     {
+        [Range(1f, 1000f)]
         public float outlineDuration;
+        [Range(1f, 1000f)]
         public float timeToRecharge;
         public bool abilityRecharging;
         public bool isOutlined;
@@ -23,9 +25,15 @@ public class PolicePowerUp : MonoBehaviour
     [System.Serializable]
     struct PowerUp2
     {
+        [Range(1f, 1000f)]
+        public float timeBeforePowerUp2Activate;
+        [Range(1f, 1000f)]
         public float immobilizationDuration;
+        [Range(1f, 1000f)]
         public float timeToRecharge;
+        [Range(1f, 1000f)]
         public float maxDistance;
+        public bool powerUp2Activated;
         public bool taserOut;
         public bool hasShot;
         public LayerMask layermask;
@@ -76,9 +84,17 @@ public class PolicePowerUp : MonoBehaviour
 
         PowerUp2Manager();
 
+        if (!powerUp2.powerUp2Activated)
+        {
+            timer2 += Time.deltaTime;
+            timeRatio2 = timer2 / powerUp2.timeBeforePowerUp2Activate;
+            powerUp2.corocopSkill2UI.fillAmount = timeRatio2;
 
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Debug.DrawRay(ray.origin, ray.direction * powerUp2.maxDistance, Color.green);
+            if(timer2 > powerUp2.timeBeforePowerUp2Activate)
+            {
+                powerUp2.powerUp2Activated = true;
+            }
+        }
     }
 
     private void PowerUp1Manager()
@@ -115,7 +131,7 @@ public class PolicePowerUp : MonoBehaviour
 
     private void PowerUp2Manager()
     {
-        if(coroCop.GetButtonDown("Ability2") && !powerUp2.hasShot && !powerUp1.talkieOut)
+        if(coroCop.GetButtonDown("Ability2") && !powerUp2.hasShot && !powerUp1.talkieOut && powerUp2.powerUp2Activated)
         {
             if (!powerUp2.taserOut)
             {
@@ -132,6 +148,8 @@ public class PolicePowerUp : MonoBehaviour
         if(coroCop.GetButtonDown("ShootGun") && powerUp2.taserOut && !powerUp2.hasShot)
         {
             powerUp2.hasShot = true;
+
+            timer2 = 0;
 
             powerUp2.taserAnim.SetTrigger("UseTaser");
 
