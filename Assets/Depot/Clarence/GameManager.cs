@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static int maskedPeopleCounter = 0;
     public static int unMaskedPeopleCounter = 0;
 
-    public float allNPCs = 5;
+    float allNPCs;
 
     public Text timerText;
 
@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timerText.text = timer.ToString();
+        allNPCs = maskedPeople.Count + unMaskedPeople.Count;
         UpdateCounter();
     }
 
