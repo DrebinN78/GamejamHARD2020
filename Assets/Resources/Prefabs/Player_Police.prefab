@@ -687,14 +687,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: CopAnimArms
       objectReference: {fileID: 0}
+    - target: {fileID: 3111750486513759307, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3238383485918112205, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
       propertyPath: policePower
       value: 
       objectReference: {fileID: 1636708951}
+    - target: {fileID: 5229023355755658412, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229023356292600223, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229023356558514126, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5924599550076329064, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
       propertyPath: policePower
       value: 
       objectReference: {fileID: 1636708951}
+    - target: {fileID: 6843516739927960503, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6843516739936198290, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9729968f0b49b8458e59d41abd4b46f, type: 3}
 --- !u!4 &422049394849249147 stripped
