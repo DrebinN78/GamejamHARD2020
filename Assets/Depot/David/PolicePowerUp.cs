@@ -16,6 +16,7 @@ public class PolicePowerUp : MonoBehaviour
         public bool isOutlined;
         public bool talkieOut;
         public GameObject talkieArm;
+        public Image corocopSkill1UI;
 
     };
 
@@ -28,6 +29,7 @@ public class PolicePowerUp : MonoBehaviour
         public bool taserOut;
         public bool hasShot;
         public LayerMask layermask;
+        public Image corocopSkill2UI;
 
         public GameObject taserArm;
         public Animator taserAnim;
@@ -37,7 +39,9 @@ public class PolicePowerUp : MonoBehaviour
     private Image crosshair;
 
     private float timer1 = 0;
+    private float timeRatio1;
     private float timer2 = 0;
+    private float timeRatio2;
 
     [SerializeField]
     private PowerUp1 powerUp1;
@@ -60,6 +64,10 @@ public class PolicePowerUp : MonoBehaviour
         {
             coroCop = ReInput.players.GetPlayer(1);
         }
+
+        powerUp1.corocopSkill1UI = GameObject.Find("CorocopSkill1").GetComponent<Image>();
+        powerUp2.corocopSkill2UI = GameObject.Find("CorocopSkill2").GetComponent<Image>();
+
     }
 
     private void Update()
@@ -82,11 +90,15 @@ public class PolicePowerUp : MonoBehaviour
             powerUp1.isOutlined = true;
             powerUp1.talkieOut = true;
             GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 10;
+            powerUp1.corocopSkill1UI.fillAmount = 0;
         }
 
         if (powerUp1.abilityRecharging)
         {
             timer1 += Time.deltaTime;
+
+            timeRatio1 = timer1 / powerUp1.timeToRecharge;
+            powerUp1.corocopSkill1UI.fillAmount = timeRatio1;
 
             if (timer1 > powerUp1.outlineDuration && powerUp1.isOutlined)
             {
@@ -138,7 +150,10 @@ public class PolicePowerUp : MonoBehaviour
         {
             timer2 += Time.deltaTime;
 
-            if(timer2 > powerUp2.timeToRecharge)
+            timeRatio2 = timer2 / powerUp2.timeToRecharge;
+            powerUp2.corocopSkill2UI.fillAmount = timeRatio2;
+
+            if (timer2 > powerUp2.timeToRecharge)
             {
                 powerUp2.hasShot = false;
                 timer2 = 0;

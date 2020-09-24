@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1689891867249784570}
   - component: {fileID: 2246369836791566741}
   m_Layer: 5
-  m_Name: CorocopSkill2
+  m_Name: CoroboySkill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &104475714017729890
@@ -1081,7 +1081,7 @@ GameObject:
   - component: {fileID: 4767677547005327533}
   - component: {fileID: 6524301393147911989}
   m_Layer: 5
-  m_Name: CorocopSkill1
+  m_Name: CoroboySkill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2828863763518001729
@@ -1463,7 +1463,7 @@ GameObject:
   - component: {fileID: 4433172419360933019}
   - component: {fileID: 561203741697632062}
   m_Layer: 5
-  m_Name: CoroboySkill1
+  m_Name: CorocopSkill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3703386298712339383
@@ -2768,7 +2768,7 @@ GameObject:
   - component: {fileID: 5677211192220453814}
   - component: {fileID: 6409564476746699570}
   m_Layer: 5
-  m_Name: CoroboySkill2
+  m_Name: CorocopSkill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2829,7 +2829,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6870174477062157187
