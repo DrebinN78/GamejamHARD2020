@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class CoronaBoyBehaviour : MonoBehaviour
@@ -19,10 +20,22 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [SerializeField] private float cooldownDurationAbility2 = 1f;
     [Range(1f, 1000f)]
     [SerializeField] private float range = 250f;
-    
 
+    private Image coroboySkill1UI;
+    private Image coroboySkill2UI;
     bool ability1ready = true;
     bool ability2ready = true;
+    private float timer1;
+    private float timeRatio1;
+    private float timer2;
+    private float timeRatio2;
+
+
+    private void Start()
+    {
+        coroboySkill1UI = GameObject.Find("CoroboySkill1").GetComponent<Image>();
+        coroboySkill2UI = GameObject.Find("CoroboySkill2").GetComponent<Image>();
+    }
 
     void Ability1()
     {
@@ -59,6 +72,19 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             Ability2();
         }
+
+        if (!ability1ready)
+        {
+            timer1 += Time.deltaTime;
+            timeRatio1 = timer1 / (cooldownDurationAbility1 + crowDuration);
+            coroboySkill1UI.fillAmount = timeRatio1;
+        }
+        if (!ability2ready)
+        {
+            timer2 += Time.deltaTime;
+            timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
+            coroboySkill2UI.fillAmount = timeRatio2;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -94,7 +120,9 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     IEnumerator Ability1routine()
     {
+        ability1ready = false;
         GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        coroboySkill1UI.fillAmount = 0;
         yield return new WaitForSecondsRealtime(crowDuration);
         Destroy(crowd);
         StartCoroutine(AbilityCoolDown(1));
@@ -103,6 +131,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
     IEnumerator Ability2routine()
     {
+        ability2ready = false;
+        coroboySkill2UI.fillAmount = 0;
         //List comprenant tout les NPC a convertir
         List<NPCBehaviour> npcList = new List<NPCBehaviour>();
         foreach(NPCBehaviour npc in GameManager.instance.maskedPeople)
@@ -154,21 +184,21 @@ public class CoronaBoyBehaviour : MonoBehaviour
     {
         if (skilltocooldown != 1)
         {
-            ability2ready = false;
             yield return new WaitForSecondsRealtime(cooldownDurationAbility2);
         }
         else
         {
-            ability1ready = false;
             yield return new WaitForSecondsRealtime(cooldownDurationAbility1);
         }
         if (skilltocooldown != 1)
         {
             ability2ready = true;
+            timer2 = 0;
         }
         else
         {
             ability1ready = true;
+            timer1 = 0;
         }
         yield return null;
 
