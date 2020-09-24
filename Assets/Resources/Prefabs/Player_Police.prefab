@@ -529,15 +529,19 @@ MonoBehaviour:
     isOutlined: 0
     talkieOut: 0
     talkieArm: {fileID: 6843516739130632349}
+    corocopSkill1UI: {fileID: 0}
   powerUp2:
+    timeBeforePowerUp2Activate: 150
     immobilizationDuration: 5
     timeToRecharge: 10
     maxDistance: 15
+    powerUp2Activated: 0
     taserOut: 0
     hasShot: 0
     layermask:
       serializedVersion: 2
       m_Bits: 1591
+    corocopSkill2UI: {fileID: 0}
     taserArm: {fileID: 6843516739122912696}
     taserAnim: {fileID: 5924599551418247780}
 --- !u!1 &8557495374722634278
