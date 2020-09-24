@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         player_instance.gameObject.SetActive(false);
         npcSelected.transform.position = NPCspawnLocation;
         npcSelected.transform.rotation = NPCspawnRotation;
-        npcSelected.isMasked = true;
+        npcSelected.Mask();
         yield return new WaitForSecondsRealtime(3f);
         player_instance.transform.position = respawnLocation;
         player_instance.transform.rotation = respawnRotation;

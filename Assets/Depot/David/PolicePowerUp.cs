@@ -14,7 +14,9 @@ public class PolicePowerUp : MonoBehaviour
         public float timeToRecharge;
         public bool abilityRecharging;
         public bool isOutlined;
-    
+        public bool talkieOut;
+        public GameObject talkieArm;
+
     };
 
     [System.Serializable]
@@ -26,6 +28,9 @@ public class PolicePowerUp : MonoBehaviour
         public bool taserOut;
         public bool hasShot;
         public LayerMask layermask;
+
+        public GameObject taserArm;
+        public Animator taserAnim;
 
     };
     
@@ -72,8 +77,10 @@ public class PolicePowerUp : MonoBehaviour
     {
         if (coroCop.GetButtonDown("Ability1") && !powerUp1.abilityRecharging && !powerUp2.taserOut)
         {
+            powerUp1.talkieArm.SetActive(true);
             powerUp1.abilityRecharging = true;
             powerUp1.isOutlined = true;
+            powerUp1.talkieOut = true;
             GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 10;
         }
 
@@ -96,23 +103,25 @@ public class PolicePowerUp : MonoBehaviour
 
     private void PowerUp2Manager()
     {
-        if(coroCop.GetButtonDown("Ability2"))
+        if(coroCop.GetButtonDown("Ability2") && !powerUp2.hasShot && !powerUp1.talkieOut)
         {
             if (!powerUp2.taserOut)
             {
+                powerUp2.taserArm.SetActive(true);
                 crosshair.enabled = true;
                 powerUp2.taserOut = true;
             }
             else
             {
-                crosshair.enabled = false;
-                powerUp2.taserOut = false;
+                powerUp2.taserAnim.SetTrigger("PutAwayTaser");
             }
         }
 
         if(coroCop.GetButtonDown("ShootGun") && powerUp2.taserOut && !powerUp2.hasShot)
         {
             powerUp2.hasShot = true;
+
+            powerUp2.taserAnim.SetTrigger("UseTaser");
 
             Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
@@ -136,6 +145,17 @@ public class PolicePowerUp : MonoBehaviour
             }
         }
 
+    }
+
+    // Pour les events
+    public void ForceTaserIn()
+    {
+        crosshair.enabled = false;
+        powerUp2.taserOut = false;
+    }
+    public void ForceTalkieIn()
+    {
+        powerUp1.talkieOut = false;
     }
     
 
