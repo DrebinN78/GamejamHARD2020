@@ -329,7 +329,8 @@ MonoBehaviour:
   rageDuration: 5
   cooldownDurationAbility1: 10
   cooldownDurationAbility2: 10
-  range: 150
+  range: 75
+  timeBeforeFirstActivationAbility2: 120
 --- !u!114 &4479204275156076083
 MonoBehaviour:
   m_ObjectHideFlags: 0

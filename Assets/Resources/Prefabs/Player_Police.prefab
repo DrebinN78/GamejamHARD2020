@@ -531,7 +531,7 @@ MonoBehaviour:
     talkieArm: {fileID: 6843516739130632349}
     corocopSkill1UI: {fileID: 0}
   powerUp2:
-    timeBeforePowerUp2Activate: 150
+    timeBeforePowerUp2Activate: 120
     immobilizationDuration: 5
     timeToRecharge: 10
     maxDistance: 15
