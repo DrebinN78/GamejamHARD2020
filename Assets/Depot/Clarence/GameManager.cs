@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static int maskedPeopleCounter = 0;
     public static int unMaskedPeopleCounter = 0;
 
-    public float allNPCs = 5;
+    float allNPCs;
 
     public Text timerText;
 
@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        p1Choice = PlayerPrefs.GetInt("P1Choice");
+        p2Choice = PlayerPrefs.GetInt("P2Choice");
         instance = this;
         //corocopObject = GetComponent<CoronaBoyBehaviour>();
         //coroboyObject = GetComponent<PoliceBehaviour>();
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         timerText.text = timer.ToString();
+        allNPCs = maskedPeople.Count + unMaskedPeople.Count;
         UpdateCounter();
     }
 
@@ -59,13 +62,13 @@ public class GameManager : MonoBehaviour
     {
         if(p1Choice == 1)
         {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
         }
         else
         {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
         }
     }
 
@@ -128,11 +131,12 @@ public class GameManager : MonoBehaviour
         player_instance.gameObject.SetActive(false);
         npcSelected.transform.position = NPCspawnLocation;
         npcSelected.transform.rotation = NPCspawnRotation;
-        npcSelected.isMasked = true;
+        npcSelected.Mask();
         yield return new WaitForSecondsRealtime(3f);
         player_instance.transform.position = respawnLocation;
         player_instance.transform.rotation = respawnRotation;
         player_instance.gameObject.SetActive(true);
+        UpdateCounter();
         yield return null;
     }
 }
