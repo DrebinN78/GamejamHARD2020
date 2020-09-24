@@ -8093,6 +8093,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6291638155081989270, guid: e6ffe461569d72e48884661195a811a7, type: 3}
   m_PrefabInstance: {fileID: 1071412819}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1082369896
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1171.2281
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 693.8945
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -367.95255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853219601152946285, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8204756350278269156, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
+      propertyPath: m_Name
+      value: Jukebox
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e86113a5ce2be1f4cb4d9da3747ff0ab, type: 3}
 --- !u!1001 &1085533168
 PrefabInstance:
   m_ObjectHideFlags: 0

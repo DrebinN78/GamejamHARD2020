@@ -16,13 +16,18 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button backTutoButton;
     [SerializeField] private Button backCreditsButton;
 
+    [SerializeField] private AudioSource backSound;
+    [SerializeField] private AudioSource clickSound;
+
     public void StartGame()
     {
+        clickSound.Play();
         SceneManager.LoadScene("RoleSelection");
     }
 
     public void OpenTuto()
     {
+        clickSound.Play();
         menu.SetActive(false);
         tutorial.SetActive(true);
         backTutoButton.Select();
@@ -30,6 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenCredits()
     {
+        clickSound.Play();
         menu.SetActive(false);
         credits.SetActive(true);
         backCreditsButton.Select();
@@ -37,6 +43,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMenuScreen()
     {
+        backSound.Play();
         menu.SetActive(true);
 
         tutorial.SetActive(false);
@@ -47,6 +54,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackFromTuto()
     {
+        backSound.Play();
         menu.SetActive(true);
 
         tutorial.SetActive(false);
@@ -57,6 +65,7 @@ public class MainMenu : MonoBehaviour
 
     public void BackFromCredits()
     {
+        backSound.Play();
         menu.SetActive(true);
 
         tutorial.SetActive(false);
@@ -67,6 +76,7 @@ public class MainMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        backSound.Play();
         Application.Quit();
     }
 }
