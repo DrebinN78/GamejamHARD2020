@@ -139,6 +139,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
         coroboySkill1UI.fillAmount = 0;
         timer1 = 0;
+        AudioManager.instance.Play("Coroboy_UseAbility1");
         yield return new WaitForSecondsRealtime(crowDuration);
         Destroy(crowd);
         StartCoroutine(AbilityCoolDown(1));
@@ -183,7 +184,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             npc.enraged = true;
         }
-
+        AudioManager.instance.Play("Coroboy_UseAbility2");
 
         yield return new WaitForSecondsRealtime(rageDuration);
 
@@ -215,6 +216,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             ability1ready = true;
         }
+        AudioManager.instance.Play("Any_AbilityCharge");
         yield return null;
 
     }
