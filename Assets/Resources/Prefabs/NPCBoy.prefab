@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoronaBoy_Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 79352ae005b9fd84d874c044a108a39d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21168c36ac882e45b841450de28cd9c, type: 3}
 --- !u!4 &5638121744821300982 stripped
