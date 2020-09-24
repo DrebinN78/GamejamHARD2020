@@ -197,6 +197,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 0}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  isStun: 0
 --- !u!82 &8557495374717684676
 AudioSource:
   m_ObjectHideFlags: 0
@@ -322,7 +323,11 @@ MonoBehaviour:
   fpsController: {fileID: 8557495374729209796}
   npcBehaviour: {fileID: 0}
   crowPrefab: {fileID: 1216461265547808910, guid: cea478a8efeeeef41912e4f264c83961, type: 3}
-  crowDuration: 1
+  crowDuration: 5
+  rageDuration: 5
+  cooldownDurationAbility1: 10
+  cooldownDurationAbility2: 10
+  range: 150
 --- !u!114 &4479204275156076083
 MonoBehaviour:
   m_ObjectHideFlags: 0

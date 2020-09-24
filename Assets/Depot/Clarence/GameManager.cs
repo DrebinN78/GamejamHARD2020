@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        p1Choice = PlayerPrefs.GetInt("P1Choice");
+        p2Choice = PlayerPrefs.GetInt("P2Choice");
         instance = this;
         //corocopObject = GetComponent<CoronaBoyBehaviour>();
         //coroboyObject = GetComponent<PoliceBehaviour>();
@@ -59,13 +61,13 @@ public class GameManager : MonoBehaviour
     {
         if(p1Choice == 1)
         {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
         }
         else
         {
-            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(0);
-            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+            corocopClass.rewiredPlayer = ReInput.players.GetPlayer(1);
+            coroboyClass.rewiredPlayer = ReInput.players.GetPlayer(0);
         }
     }
 
@@ -133,6 +135,7 @@ public class GameManager : MonoBehaviour
         player_instance.transform.position = respawnLocation;
         player_instance.transform.rotation = respawnRotation;
         player_instance.gameObject.SetActive(true);
+        UpdateCounter();
         yield return null;
     }
 }

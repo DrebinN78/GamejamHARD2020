@@ -37,9 +37,6 @@ public class RoleSelection : MonoBehaviour
     [SerializeField]
     private bool m_P2isMoving;
 
-    public static int m_P1Choice;
-    public static int m_P2Choice;
-
     void Start()
     {
         DontDestroyOnLoad(this);
@@ -157,8 +154,9 @@ public class RoleSelection : MonoBehaviour
         {
             if (CheckIfPositionIsOK())
             {
-                m_P1Choice = m_PositionP1;
-                m_P2Choice = m_PositionP2;
+                PlayerPrefs.SetInt("P1Choice", m_PositionP1);
+                PlayerPrefs.SetInt("P2Choice", m_PositionP2);
+
                 SceneManager.LoadScene(1);
             }
             else
@@ -175,13 +173,12 @@ public class RoleSelection : MonoBehaviour
             return true;
         return false;
     }
-
+    
     private void OnLevelWasLoaded(int level)
     {
+        // Ne sert plus à retirer si possible en plus du script dans la scène principale
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            GameManager.instance.p1Choice = m_P1Choice;
-            GameManager.instance.p2Choice = m_P2Choice;
             Destroy(gameObject);
         }
     }

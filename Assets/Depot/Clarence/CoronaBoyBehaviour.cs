@@ -17,8 +17,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [SerializeField] private float cooldownDurationAbility1 = 1f;
     [Range(1f, 30f)]
     [SerializeField] private float cooldownDurationAbility2 = 1f;
-    [Range(1f, 30f)]
-    [SerializeField] private float range = 1f;
+    [Range(1f, 1000f)]
+    [SerializeField] private float range = 250f;
     
 
     bool ability1ready = true;
@@ -78,6 +78,20 @@ public class CoronaBoyBehaviour : MonoBehaviour
         else return;
     }
 
+    bool CheckDistance(Vector3 origin, Vector3 target, float maxRange)
+    {
+        Vector3 distance = new Vector3(target.x - origin.x, target.y - origin.y, target.z - origin.z);
+        float sqrLen = distance.sqrMagnitude;
+        if(sqrLen< maxRange*maxRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     IEnumerator Ability1routine()
     {
         GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
@@ -99,18 +113,24 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             npcList.Add(npc);
         }
-        foreach(NPCBehaviour pos in npcList)
+        List<NPCBehaviour> npcToIgnore = new List<NPCBehaviour>();
+        foreach (NPCBehaviour pos in npcList)
         {
-            if(!(pos.transform.position.x > transform.position.x-range && pos.transform.position.x < transform.position.x + range && pos.transform.position.z > transform.position.z - range && pos.transform.position.z < transform.position.z + range))
+            
+            if (!CheckDistance(transform.position, pos.transform.position, range))
             {
-                npcList.Remove(pos);
+                npcToIgnore.Add(pos);
             }
             else 
             {
                 Debug.Log("Coronaboy converted" + gameObject.name);
             }
         }
-
+        foreach(NPCBehaviour npc in npcToIgnore)
+        {
+            npcList.Remove(npc);
+        }
+        npcToIgnore = null;
         //faire foncer tous les npcs de la liste "npclist" sur le corocop
         foreach (NPCBehaviour npc in npcList)
         {
