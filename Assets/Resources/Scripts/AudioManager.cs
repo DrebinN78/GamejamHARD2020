@@ -25,15 +25,16 @@ public class AudioManager : MonoBehaviour
         }
         foreach (Sound s in sounds)
         {
-            if(s.source == null)
+            if (s.source == null)
             {
-                s.source = FindObjectOfType<Camera>().gameObject.AddComponent<AudioSource>();
+                s.source = FindObjectOfType<AudioListener>().gameObject.AddComponent<AudioSource>();
             }
             s.source.clip = s.clip;
             s.source.playOnAwake = s.playOnAwake;
             s.source.volume = volumeGainGlobal;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.spatialize = false;
         }
         //MusicPrefab = Resources.Load<GameObject>("Prefab/Musique");
     }
