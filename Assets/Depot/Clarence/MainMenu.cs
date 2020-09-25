@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         clickSound.Play();
-        SceneManager.LoadScene("RoleSelection");
+        SceneManager.LoadScene(1);
     }
 
     public void OpenTuto()

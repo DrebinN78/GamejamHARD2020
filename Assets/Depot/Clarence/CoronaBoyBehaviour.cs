@@ -9,7 +9,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
 {
     [SerializeField] private FirstPersonController fpsController;
     [SerializeField] private NPCBehaviour npcBehaviour;
-    [SerializeField] private GameObject crowPrefab;
+    [SerializeField] private GameObject crowdPrefab;
     [Range(1f, 5f)]
     [SerializeField] private float crowDuration = 1f;
     [Range(1f, 5f)]
@@ -148,12 +148,12 @@ public class CoronaBoyBehaviour : MonoBehaviour
     IEnumerator Ability1routine()
     {
         ability1ready = false;
-        crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        GameObject spawnedcrowd = Instantiate(crowdPrefab, transform.position, transform.rotation);
         coroboySkill1UI.fillAmount = 0;
         timer1 = 0;
         AudioManager.instance.Play("Coroboy_UseAbility1");
         yield return new WaitForSecondsRealtime(crowDuration);
-        Destroy(crowd);
+        Destroy(spawnedcrowd);
         StartCoroutine(AbilityCoolDown(1));
         yield return null;
     }

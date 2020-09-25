@@ -40,10 +40,7 @@ public class AudioManager : MonoBehaviour
 
     public void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            SpawnMusic();
-        }
+        SpawnMusic();
         foreach (Sound s in sounds)
         {
             if(s.playOnAwake)
@@ -55,7 +52,7 @@ public class AudioManager : MonoBehaviour
 
     public void SpawnMusic()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1){ 
+        if(SceneManager.GetActiveScene().buildIndex == 2){ 
             Instantiate(MusicPrefab);
         }
         else
