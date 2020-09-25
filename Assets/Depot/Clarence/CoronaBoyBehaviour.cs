@@ -13,7 +13,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [Range(1f, 5f)]
     [SerializeField] private float crowDuration = 1f;
     [Range(1f, 5f)]
-    [SerializeField] private float rageDuration = 1f;
+    [SerializeField] private float boostDuration = 1f;
     [Range(1f, 30f)]
     [SerializeField] private float cooldownDurationAbility1 = 1f;
     [Range(1f, 30f)]
@@ -93,10 +93,10 @@ public class CoronaBoyBehaviour : MonoBehaviour
         if (!ability2ready)
         {
             timer2 += Time.deltaTime;
-            timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
+            timeRatio2 = timer2 / (cooldownDurationAbility2 + boostDuration);
             coroboySkill2UI.fillAmount = timeRatio2;
 
-            if(timer2 > (cooldownDurationAbility2 + rageDuration))
+            if(timer2 > (cooldownDurationAbility2 + boostDuration))
             {
                 ability2ready = true;
             }
@@ -168,7 +168,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         float originSpeed = fpsController.m_RunSpeed;
         fpsController.m_RunSpeed *= 1.5f;
 
-        yield return new WaitForSecondsRealtime(rageDuration);
+        yield return new WaitForSecondsRealtime(boostDuration);
         fpsController.m_RunSpeed = originSpeed;
 
         StartCoroutine(AbilityCoolDown(2));
