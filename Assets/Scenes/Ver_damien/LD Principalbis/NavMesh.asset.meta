@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< refs/remotes/origin/Intégration
 guid: 1fd5ed1f5d5e5dc4293511c981759e8c
+=======
+guid: d4606f84e93f1f845a01e55718470b60
+>>>>>>> Resolution conflit
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
