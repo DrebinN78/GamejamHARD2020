@@ -49,105 +49,105 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 65f51a0407d9fc341aee415fbe5e000c, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Coroboy_UnMask
     clip: {fileID: 8300000, guid: 8be2332a3255e854086d2609a0e9833b, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Coroboy_UseAbility1
     clip: {fileID: 8300000, guid: 9515e2f43b0f0f84caa9b5cca6bfcae3, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Coroboy_Elec
     clip: {fileID: 8300000, guid: 008c2df1168fdfd4cb528169abd47cf0, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Coroboy_UseAbility2
     clip: {fileID: 8300000, guid: 0689976a63f0c1e46a06883973c00f43, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Corocop_Mask
     clip: {fileID: 8300000, guid: 200e6af91e83040498f13ed684207c7c, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Corocop_UseAbility1
     clip: {fileID: 8300000, guid: 7da9d095783e9ea498a56bc261798f6f, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Corocop_TakeTaser
     clip: {fileID: 8300000, guid: 0e700113078851746897c7f47beb7f81, type: 3}
     source: {fileID: 0}
     volume: 0
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Corocop_UseTaser
     clip: {fileID: 8300000, guid: 786373750d26f18488433e4e023abd05, type: 3}
     source: {fileID: 0}
     volume: 0
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Environment_Say1
     clip: {fileID: 8300000, guid: 0531c7ed1b11bf54bb268811329de5f5, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Environment_Say2
     clip: {fileID: 8300000, guid: c53fe8ff06a3693428466ab686b33595, type: 3}
     source: {fileID: 0}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Environment_Say3
     clip: {fileID: 8300000, guid: 5b3742787a44f2f46b2cf9c7000e03a6, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Environment_Say4
     clip: {fileID: 8300000, guid: c93a4c87488e94842b0fb8d7c7e209b5, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: Environment_Say5
     clip: {fileID: 8300000, guid: a6e1df71969c0e247925c3d4cc8ca2f7, type: 3}
     source: {fileID: 0}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: UI_ClickButton
     clip: {fileID: 8300000, guid: 8f7a57cb304be5e48a94c972b3183768, type: 3}
     source: {fileID: 0}
     volume: 1
-    pitch: 0
+    pitch: 1
     playOnAwake: 0
     loop: 0
   - name: 

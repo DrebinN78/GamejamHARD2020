@@ -2080,6 +2080,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Police
       objectReference: {fileID: 0}
+    - target: {fileID: 8557495374729209796, guid: 89cec70c52f0f8942a694f2b1acf2ed2, type: 3}
+      propertyPath: m_MouseLook.XSensitivity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557495374729209796, guid: 89cec70c52f0f8942a694f2b1acf2ed2, type: 3}
+      propertyPath: m_MouseLook.YSensitivity
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89cec70c52f0f8942a694f2b1acf2ed2, type: 3}
 --- !u!1001 &1220354089
@@ -2440,6 +2448,14 @@ PrefabInstance:
     - target: {fileID: 8557495374722634276, guid: 21788464748ce344c92006ff64d57428, type: 3}
       propertyPath: m_Name
       value: Player_Coronaboy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
+      propertyPath: m_MouseLook.YSensitivity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557495374729209796, guid: 21788464748ce344c92006ff64d57428, type: 3}
+      propertyPath: m_MouseLook.XSensitivity
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21788464748ce344c92006ff64d57428, type: 3}
