@@ -1462,7 +1462,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 698796687, guid: b37b3feb4869ae344a9c5b7be4f8490c, type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7544530892584245820, guid: b37b3feb4869ae344a9c5b7be4f8490c, type: 3}
       propertyPath: timerText
@@ -2509,6 +2509,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7327619393463175224, guid: 21788464748ce344c92006ff64d57428, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8557495374722600452, guid: 21788464748ce344c92006ff64d57428, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.77
