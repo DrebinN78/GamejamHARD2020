@@ -49,6 +49,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool isStun;
         [SerializeField]
         private GameObject spark;
+        [SerializeField]
+        private GameObject dust;
 
         //Animation
         private Animator m_Anim;
@@ -246,6 +248,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 if (horizontal != 0 || vertical != 0)
                 {
+                    if (!dust.activeSelf)
+                        dust.SetActive(true);
+
                     if (m_IsWalking)
                     {
                         m_Anim.SetBool("IsWalk", true);
@@ -259,6 +264,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
                 else
                 {
+                    if (dust.activeSelf)
+                        dust.SetActive(false);
+
                     m_Anim.SetBool("IsWalk", false);
                     m_Anim.SetBool("IsRun", false);
                     m_Anim.SetBool("Idle", true);

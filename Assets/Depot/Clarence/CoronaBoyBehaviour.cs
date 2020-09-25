@@ -34,6 +34,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [Range(1f, 1000f)]
     [SerializeField] private float timeBeforeFirstActivationAbility2 = 150f;
 
+    private GameObject crowd;
+
 
     private void Start()
     {
@@ -82,12 +84,22 @@ public class CoronaBoyBehaviour : MonoBehaviour
             timer1 += Time.deltaTime;
             timeRatio1 = timer1 / (cooldownDurationAbility1 + crowDuration);
             coroboySkill1UI.fillAmount = timeRatio1;
+
+            if(timer1 > (cooldownDurationAbility1 + crowDuration))
+            {
+                ability1ready = true;
+            }
         }
         if (!ability2ready)
         {
             timer2 += Time.deltaTime;
             timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
             coroboySkill2UI.fillAmount = timeRatio2;
+
+            if(timer2 > (cooldownDurationAbility2 + rageDuration))
+            {
+                ability2ready = true;
+            }
         }
         if (!ability2Activated)
         {
@@ -136,7 +148,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
     IEnumerator Ability1routine()
     {
         ability1ready = false;
-        GameObject crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
         coroboySkill1UI.fillAmount = 0;
         timer1 = 0;
         AudioManager.instance.Play("Coroboy_UseAbility1");
@@ -196,6 +208,11 @@ public class CoronaBoyBehaviour : MonoBehaviour
 
         StartCoroutine(AbilityCoolDown(2));
         yield return null;
+    }
+
+    public void DestroyCurrentCrowd(float time)
+    {
+        Destroy(crowd, time);
     }
 
     IEnumerator AbilityCoolDown(int skilltocooldown)
