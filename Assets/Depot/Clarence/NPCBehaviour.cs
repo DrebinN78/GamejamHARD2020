@@ -51,6 +51,9 @@ public class NPCBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.y < 0.07f)
+            transform.position = new Vector3(transform.position.x, 0.07f, transform.position.z);
+
         if (isInLimits && !enraged)
         {
             if (agent.speed == 0f)
@@ -71,7 +74,7 @@ public class NPCBehaviour : MonoBehaviour
         if (enraged)
         {
             agent.SetDestination(GameObject.Find("Player_Police").transform.position);
-            if(agent.remainingDistance < 2f)
+            if (agent.remainingDistance < 2f)
             {
                 agent.speed = 0;
             }
@@ -94,7 +97,7 @@ public class NPCBehaviour : MonoBehaviour
             agent.SetDestination(originalPos);
         }
 
-        if(agent.remainingDistance < 0.1f)
+        if (agent.remainingDistance < 0.1f)
         {
             anim.SetBool("IsWalk", false);
             isMoving = false;
@@ -188,5 +191,5 @@ public class NPCBehaviour : MonoBehaviour
         }
         GameManager.instance.UpdateCounter();
     }
-    
+
 }
