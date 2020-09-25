@@ -131,8 +131,8 @@ MonoBehaviour:
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
-    XSensitivity: 5
-    YSensitivity: 5
+    XSensitivity: 2
+    YSensitivity: 2
     clampVerticalRotation: 1
     MinimumX: -80
     MaximumX: 80
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsController: {fileID: 8557495374729209796}
   npcBehaviour: {fileID: 0}
-  crowPrefab: {fileID: 1216461265547808910, guid: cea478a8efeeeef41912e4f264c83961, type: 3}
+  crowdPrefab: {fileID: 0}
   crowDuration: 5
   boostDuration: 3
   cooldownDurationAbility1: 10
