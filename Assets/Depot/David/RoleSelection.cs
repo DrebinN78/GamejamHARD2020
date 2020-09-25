@@ -39,7 +39,6 @@ public class RoleSelection : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(this);
         Cursor.visible = false;
         m_OriginalPositionP1 = m_ControllerP1.transform.position;
         m_OriginalPositionP2 = m_ControllerP2.transform.position;
@@ -157,7 +156,7 @@ public class RoleSelection : MonoBehaviour
                 PlayerPrefs.SetInt("P1Choice", m_PositionP1);
                 PlayerPrefs.SetInt("P2Choice", m_PositionP2);
 
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
             else
             {
@@ -172,14 +171,5 @@ public class RoleSelection : MonoBehaviour
         if (m_PositionP1 != m_PositionP2 && m_PositionP1 != 0 && m_PositionP2 != 0)
             return true;
         return false;
-    }
-    
-    private void OnLevelWasLoaded(int level)
-    {
-        // Ne sert plus à retirer si possible en plus du script dans la scène principale
-        if(SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            Destroy(gameObject);
-        }
     }
 }

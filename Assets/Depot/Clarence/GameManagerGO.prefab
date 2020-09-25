@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7544530892584245821}
   - component: {fileID: 7544530892584245820}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManagerGO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreen: {fileID: 0}
-  timer: 60
-  allNPCs: 5
+  timer: 240
+  allNPCs: 55
   timerText: {fileID: 0}
   maskedText: {fileID: 0}
   unMaskedText: {fileID: 0}
@@ -59,3 +59,4 @@ MonoBehaviour:
   maskedPeople: []
   p1Choice: 0
   p2Choice: 0
+  bustedFade: {fileID: 0}

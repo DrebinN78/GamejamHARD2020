@@ -9,17 +9,19 @@ public class CoronaBoyBehaviour : MonoBehaviour
 {
     [SerializeField] private FirstPersonController fpsController;
     [SerializeField] private NPCBehaviour npcBehaviour;
-    [SerializeField] private GameObject crowPrefab;
+    [SerializeField] private GameObject crowdPrefab;
     [Range(1f, 5f)]
     [SerializeField] private float crowDuration = 1f;
     [Range(1f, 5f)]
-    [SerializeField] private float rageDuration = 1f;
+    [SerializeField] private float boostDuration = 1f;
     [Range(1f, 30f)]
     [SerializeField] private float cooldownDurationAbility1 = 1f;
     [Range(1f, 30f)]
     [SerializeField] private float cooldownDurationAbility2 = 1f;
     [Range(1f, 1000f)]
     [SerializeField] private float range = 250f;
+
+    [SerializeField] private ParticleSystem particle;
 
     private Image coroboySkill1UI;
     private Image coroboySkill2UI;
@@ -93,10 +95,10 @@ public class CoronaBoyBehaviour : MonoBehaviour
         if (!ability2ready)
         {
             timer2 += Time.deltaTime;
-            timeRatio2 = timer2 / (cooldownDurationAbility2 + rageDuration);
+            timeRatio2 = timer2 / (cooldownDurationAbility2 + boostDuration);
             coroboySkill2UI.fillAmount = timeRatio2;
 
-            if(timer2 > (cooldownDurationAbility2 + rageDuration))
+            if(timer2 > (cooldownDurationAbility2 + boostDuration))
             {
                 ability2ready = true;
             }
@@ -148,12 +150,12 @@ public class CoronaBoyBehaviour : MonoBehaviour
     IEnumerator Ability1routine()
     {
         ability1ready = false;
-        crowd = Instantiate(crowPrefab, transform.position, transform.rotation);
+        GameObject spawnedcrowd = Instantiate(crowdPrefab, transform.position, transform.rotation);
         coroboySkill1UI.fillAmount = 0;
         timer1 = 0;
         AudioManager.instance.Play("Coroboy_UseAbility1");
         yield return new WaitForSecondsRealtime(crowDuration);
-        Destroy(crowd);
+        Destroy(spawnedcrowd);
         StartCoroutine(AbilityCoolDown(1));
         yield return null;
     }
@@ -163,6 +165,19 @@ public class CoronaBoyBehaviour : MonoBehaviour
         ability2ready = false;
         timer2 = 0;
         coroboySkill2UI.fillAmount = 0;
+        AudioManager.instance.Play("Coroboy_UseAbility2");
+
+        float originSpeed = fpsController.m_RunSpeed;
+        fpsController.m_RunSpeed *= 1.5f;
+        particle.Play();
+
+        yield return new WaitForSecondsRealtime(boostDuration);
+        fpsController.m_RunSpeed = originSpeed;
+
+        StartCoroutine(AbilityCoolDown(2));
+        yield return null;
+
+        /*
         //List comprenant tout les NPC a convertir
         List<NPCBehaviour> npcList = new List<NPCBehaviour>();
         foreach(NPCBehaviour npc in GameManager.instance.maskedPeople)
@@ -196,18 +211,13 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             npc.enraged = true;
         }
-        AudioManager.instance.Play("Coroboy_UseAbility2");
-
-        yield return new WaitForSecondsRealtime(rageDuration);
 
         //retourner tous les npc de la liste "npclist" à l'état normal
         foreach (NPCBehaviour npc in npcList)
         {
             npc.enraged = false;
         }
-
-        StartCoroutine(AbilityCoolDown(2));
-        yield return null;
+        */
     }
 
     public void DestroyCurrentCrowd(float time)
