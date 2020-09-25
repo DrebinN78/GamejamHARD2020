@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4456800922847572863}
   - component: {fileID: 753903541314747610}
   - component: {fileID: 3283845473158924304}
+  - component: {fileID: 5541554038155259555}
   m_Layer: 0
   m_Name: PoliceStation
   m_TagString: Untagged
@@ -87,6 +88,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5541554038155259555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932324717805316549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25.605173, y: 30.56688, z: 29.443872}
+  m_Center: {x: -0.23604822, y: -0.06729362, z: 14.721931}
 --- !u!1 &8992870155229020475
 GameObject:
   m_ObjectHideFlags: 0
