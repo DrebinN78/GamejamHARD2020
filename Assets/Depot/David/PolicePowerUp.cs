@@ -105,7 +105,7 @@ public class PolicePowerUp : MonoBehaviour
             powerUp1.abilityRecharging = true;
             powerUp1.isOutlined = true;
             powerUp1.talkieOut = true;
-            GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 10;
+            GameObject.FindGameObjectWithTag("OutlineBody").GetComponent<Outline>().OutlineWidth = 10;
             powerUp1.corocopSkill1UI.fillAmount = 0;
         }
 
@@ -118,7 +118,7 @@ public class PolicePowerUp : MonoBehaviour
 
             if (timer1 > powerUp1.outlineDuration && powerUp1.isOutlined)
             {
-                GameObject.Find("Player_Coronaboy").GetComponent<Outline>().OutlineWidth = 0;
+                GameObject.FindGameObjectWithTag("OutlineBody").GetComponent<Outline>().OutlineWidth = 0;
                 powerUp1.isOutlined = false;
             }
             if (timer1 > powerUp1.timeToRecharge)
