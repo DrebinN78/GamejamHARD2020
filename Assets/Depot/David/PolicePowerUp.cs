@@ -101,6 +101,7 @@ public class PolicePowerUp : MonoBehaviour
     {
         if (coroCop.GetButtonDown("Ability1") && !powerUp1.abilityRecharging && !powerUp2.taserOut)
         {
+            AudioManager.instance.Play("Corocop_UseAbility1");
             powerUp1.talkieArm.SetActive(true);
             powerUp1.abilityRecharging = true;
             powerUp1.isOutlined = true;
@@ -123,6 +124,7 @@ public class PolicePowerUp : MonoBehaviour
             }
             if (timer1 > powerUp1.timeToRecharge)
             {
+                AudioManager.instance.Play("Any_AbilityCharge");
                 powerUp1.abilityRecharging = false;
                 timer1 = 0;
             }
@@ -135,12 +137,14 @@ public class PolicePowerUp : MonoBehaviour
         {
             if (!powerUp2.taserOut)
             {
+                AudioManager.instance.Play("Coronacop_TakeTaser");
                 powerUp2.taserArm.SetActive(true);
                 crosshair.enabled = true;
                 powerUp2.taserOut = true;
             }
             else
             {
+                AudioManager.instance.Play("Coronacop_TakeTaser");
                 powerUp2.taserAnim.SetTrigger("PutAwayTaser");
             }
         }
@@ -148,7 +152,7 @@ public class PolicePowerUp : MonoBehaviour
         if(coroCop.GetButtonDown("ShootGun") && powerUp2.taserOut && !powerUp2.hasShot)
         {
             powerUp2.hasShot = true;
-
+            AudioManager.instance.Play("Coronacop_UseTaser");
             timer2 = 0;
 
             powerUp2.taserAnim.SetTrigger("UseTaser");
@@ -159,6 +163,7 @@ public class PolicePowerUp : MonoBehaviour
             {
                 if(hit.collider.tag == "Player")
                 {
+                    AudioManager.instance.Play("Coronaboy_Elec");
                     hit.collider.gameObject.GetComponent<FirstPersonController>().Stun(powerUp2.immobilizationDuration);
                 }
             }
@@ -173,6 +178,7 @@ public class PolicePowerUp : MonoBehaviour
 
             if (timer2 > powerUp2.timeToRecharge)
             {
+                AudioManager.instance.Play("Any_AbilityCharge");
                 powerUp2.hasShot = false;
                 timer2 = 0;
             }

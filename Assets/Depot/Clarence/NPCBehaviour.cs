@@ -158,6 +158,7 @@ public class NPCBehaviour : MonoBehaviour
 
     public void UnMask()
     {
+        AudioManager.instance.Play("Coronaboy_Unmask");
         GameManager.instance.unMaskedPeople.Add(this);
         mask.SetActive(false);
         foreach (NPCBehaviour coronaBoy in GameManager.instance.maskedPeople)
@@ -174,6 +175,7 @@ public class NPCBehaviour : MonoBehaviour
 
     public void Mask()
     {
+        AudioManager.instance.Play("Coronacop_Mask");
         GameManager.instance.maskedPeople.Add(this);
         mask.SetActive(true);
         foreach (NPCBehaviour coronaBoy in GameManager.instance.unMaskedPeople)
