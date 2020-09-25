@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     public int p1Choice = 0;
     public int p2Choice = 0;
 
+    public GameObject bustedFade;
+
     private void Awake()
     {
         p1Choice = PlayerPrefs.GetInt("P1Choice");
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        bustedFade.SetActive(false);
         timerText.text = timer.ToString();
         UpdateCounter();
     }
@@ -126,6 +129,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator RespawnCoroboy(CoronaBoyBehaviour player_instance)
     {
+        bustedFade.SetActive(true);
+
         NPCBehaviour npcSelected = unMaskedPeople[0];
         Vector3 respawnLocation = npcSelected.transform.position;
         Vector3 NPCspawnLocation = player_instance.transform.position;
@@ -136,6 +141,7 @@ public class GameManager : MonoBehaviour
         npcSelected.transform.rotation = NPCspawnRotation;
         npcSelected.Mask();
         yield return new WaitForSecondsRealtime(3f);
+        bustedFade.SetActive(false);
         player_instance.transform.position = respawnLocation;
         player_instance.transform.rotation = respawnRotation;
         player_instance.gameObject.SetActive(true);
