@@ -157,7 +157,7 @@ public class RoleSelection : MonoBehaviour
                 PlayerPrefs.SetInt("P1Choice", m_PositionP1);
                 PlayerPrefs.SetInt("P2Choice", m_PositionP2);
 
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
             else
             {

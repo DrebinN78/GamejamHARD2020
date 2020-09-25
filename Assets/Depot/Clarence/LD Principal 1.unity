@@ -15582,6 +15582,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6291638155081989270, guid: e6ffe461569d72e48884661195a811a7, type: 3}
   m_PrefabInstance: {fileID: 1955427516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1958423091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6974177038972682429, guid: 0c31a511f9d4ca546a059fc5a7c9ce1d, type: 3}
+  m_PrefabInstance: {fileID: 1698918575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1986850004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17292,6 +17297,10 @@ PrefabInstance:
       propertyPath: allNPCs
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7544530892584245820, guid: b37b3feb4869ae344a9c5b7be4f8490c, type: 3}
+      propertyPath: bustedFade
+      value: 
+      objectReference: {fileID: 1958423091}
     - target: {fileID: 7544530892584245821, guid: b37b3feb4869ae344a9c5b7be4f8490c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.8554325
