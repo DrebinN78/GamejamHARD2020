@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScreen: {fileID: 0}
-  timer: 120
+  timer: 240
   allNPCs: 5
   timerText: {fileID: 0}
   maskedText: {fileID: 0}
@@ -60,6 +60,7 @@ MonoBehaviour:
   maskedPeople: []
   p1Choice: 0
   p2Choice: 0
+  bustedFade: {fileID: 0}
 --- !u!82 &698796687
 AudioSource:
   m_ObjectHideFlags: 0
