@@ -165,7 +165,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         ability2ready = false;
         timer2 = 0;
         coroboySkill2UI.fillAmount = 0;
-        //AudioManager.instance.Play("Coroboy_UseAbility2");
+        AudioManager.instance.Play("Coroboy_UseAbility2");
 
         float originSpeed = fpsController.m_RunSpeed;
         fpsController.m_RunSpeed *= 1.5f;
@@ -243,7 +243,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             ability1ready = true;
         }
-        //AudioManager.instance.Play("Any_AbilityCharge");
+        AudioManager.instance.Play("Any_AbilityCharge");
         yield return null;
 
     }
