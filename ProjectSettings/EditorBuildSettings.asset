@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Depot/David/RoleSelection.unity
     guid: 1dd1e9db042c59a459031e845d65c496
-  - enabled: 0
-    path: Assets/Depot/Clarence/LD Principal 1.unity
-    guid: 5b88d7a97f807d84481527f77f76151b
   - enabled: 1
     path: Assets/Scenes/LD Principalbis.unity
     guid: c99dfbd11d5423541af0b859b22a90e9
