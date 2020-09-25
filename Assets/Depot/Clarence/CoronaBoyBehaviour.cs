@@ -21,6 +21,8 @@ public class CoronaBoyBehaviour : MonoBehaviour
     [Range(1f, 1000f)]
     [SerializeField] private float range = 250f;
 
+    [SerializeField] private ParticleSystem particle;
+
     private Image coroboySkill1UI;
     private Image coroboySkill2UI;
     bool ability1ready = true;
@@ -163,10 +165,11 @@ public class CoronaBoyBehaviour : MonoBehaviour
         ability2ready = false;
         timer2 = 0;
         coroboySkill2UI.fillAmount = 0;
-        AudioManager.instance.Play("Coroboy_UseAbility2");
+        //AudioManager.instance.Play("Coroboy_UseAbility2");
 
         float originSpeed = fpsController.m_RunSpeed;
         fpsController.m_RunSpeed *= 1.5f;
+        particle.Play();
 
         yield return new WaitForSecondsRealtime(boostDuration);
         fpsController.m_RunSpeed = originSpeed;
@@ -240,7 +243,7 @@ public class CoronaBoyBehaviour : MonoBehaviour
         {
             ability1ready = true;
         }
-        AudioManager.instance.Play("Any_AbilityCharge");
+        //AudioManager.instance.Play("Any_AbilityCharge");
         yield return null;
 
     }
